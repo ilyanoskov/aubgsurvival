@@ -1,0 +1,23 @@
+{
+  "name": "aubgsurvival",
+  "version": "1.0.0",
+  "description": "AUBG survival web app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyanoskov/aubgsurvival.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ilyanoskov/aubgsurvival/issues"
+  },
+  "homepage": "https://github.com/ilyanoskov/aubgsurvival#readme",
+  "dependencies": {
+    "bluebird": "^3.4.7"
+  }
+}
