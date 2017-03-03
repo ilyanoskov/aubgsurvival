@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import NavigationBar from '../common/Header';
 
 class App extends React.Component {
@@ -11,6 +11,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 export default App;

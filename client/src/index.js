@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router';
-import Header from './components/common/Header.js'
-
-import Routes from './routes';
+import { Router, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import {createStore, applyMiddleware} from 'redux';
 
 import './index.css';
+import routes from './routes';
+
+const store = createStore(
+    (state = {}) => state,
+    applyMiddleware(thunk)
+);
+
 
 ReactDOM.render(
-  <Routes history={browserHistory} />,
-  document.getElementById('root')
+    <Provider store={store}>
+       <Router history={browserHistory} routes={routes} />
+     </Provider>, document.getElementById('root')
 );
