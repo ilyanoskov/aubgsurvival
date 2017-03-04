@@ -1,13 +1,18 @@
+import classnames from 'classnames';
 import React from 'react';
+import validateInput from './inputValidation'
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class SignupForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            name: '',
             email: '',
             password : '',
-            passwordConfirmation : ''
+            passwordConfirmation : '',
+            errors : {},
+            isLoading : false
         }
 
         this.onChange = this.onChange.bind(this);
@@ -18,59 +23,62 @@ class SignupForm extends React.Component {
         this.setState ({ [e.target.name] : e.target.value});
     }
 
+    isValid() {
+        const {errors, isValid} = validateInput(this.state);
+
+        if (!isValid) {
+            this.setState({errors});
+        }
+
+        return isValid;
+    };
+
     onSubmit(e) {
         e.preventDefault();
-        this.props.userSignupRequest(this.state);
+
+        this.setState({errors : {}, isLoading : true });
+        this.props.userSignupRequest(this.state).then(
+            () => {},
+            (err) => this.setState({errors : err.response.data, isLoading : false})
+        );
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <form onSubmit={this.onSubmit}>
                 <h1> Join the game! </h1>
-                <div className="form-group">
-                    <label className="control-label"> Name </label>
-                    <input
-                        value={this.state.username}
-                        onChange={this.onChange}
-                        type="text"
-                        name="username"
-                        className="form-control"
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="control-label"> E-mail </label>
-                    <input
-                        value={this.state.email}
-                        onChange={this.onChange}
-                        type="text"
-                        name="email"
-                        className="form-control"
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="control-label"> Password </label>
-                    <input
-                        value={this.state.password}
-                        onChange={this.onChange}
-                        type="text"
-                        name="password"
-                        className="form-control"
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="control-label"> Password Confirmation </label>
-                    <input
-                        value={this.state.passwordConfirmation}
-                        onChange={this.onChange}
-                        type="text"
-                        name="passwordConfirmation"
-                        className="form-control"
-                    />
-                </div>
-
+                <TextFieldGroup
+                    error={errors.name}
+                    label="First and Last name"
+                    onChange={this.onChange}
+                    value={this.state.name}
+                    field="name"
+                />
+                <TextFieldGroup
+                    error={errors.email}
+                    label="E-mail"
+                    onChange={this.onChange}
+                    value={this.state.email}
+                    field="email"
+                />
+                <TextFieldGroup
+                    error={errors.password}
+                    label="Password"
+                    onChange={this.onChange}
+                    value={this.state.password}
+                    field="password"
+                />
+                <TextFieldGroup
+                    error={errors.passwordConfirmation}
+                    label="Confirm your password"
+                    onChange={this.onChange}
+                    value={this.state.passwordConfirmation}
+                    field="passwordConfirmation"
+                />
 
                 <div className="form-group">
-                    <button className="btn btn-primary btn-lg">
+                    <button disabled={this.state.isLoading} className="btn btn-primary btn-lg">
                         Sign up
                     </button>
                 </div>
