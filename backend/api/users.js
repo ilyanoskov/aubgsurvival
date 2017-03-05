@@ -1,10 +1,21 @@
 const Validator = require('validator');
 const _ = require('lodash');
 
+//Checks if a user exists in a database
 const userExists = async(db, name) => {
     let found = [];
     found = await db.collection('users').find({name: name});
     return (!_.isEmpty(found));
+}
+
+//builds a new user profile, stripping down unnecessary front-end stuff
+const userBuilder = (body) => {
+    let user = {};
+    user.name = body.name;
+    user.email = body.email;
+    user.password = body.password;
+    user.passwordConfirmation = body.passwordConfirmation;
+    return user;
 }
 
 const validateInput = async (req) => {
@@ -57,6 +68,7 @@ const validateInput = async (req) => {
     return {errors, isValid: _.isEmpty(errors)}
 }
 
+// Get all users in the database, useful for debugging
 module.exports.users = async(req, res) => {
     let db = req.db;
     let response;
@@ -68,6 +80,14 @@ module.exports.users = async(req, res) => {
     res.send(response);
 };
 
+// Register a new user
+/*
+1. Validate the input on the server side
+1.5 Check if a user exists in the database
+2. Build a user (clean the object from state information)
+3. Upload to database
+*/
+
 module.exports.register = async(req, res) => {
     // all validations happen here
     const {errors, isValid} = await validateInput(req);
@@ -78,7 +98,7 @@ module.exports.register = async(req, res) => {
         let db = req.db;
         //user creation logic
         try {
-            let response = await db.collection('users').insert(req.body);
+            let response = await db.collection('users').insert(userBuilder(req.body));
             console.log('User created');
             console.log(response);
             res.status(200).send('User created succesfully');

@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import React from 'react';
 import validateInput from './inputValidation'
 import TextFieldGroup from '../common/TextFieldGroup';
+import { browserHistory } from 'react-router';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -38,7 +39,13 @@ class SignupForm extends React.Component {
 
         this.setState({errors : {}, isLoading : true });
         this.props.userSignupRequest(this.state).then(
-            () => {},
+            () => {
+                this.props.addFlashMessage({
+                    type : 'success',
+                    text : 'Registration is successful! Get ready for Hunting!'
+                });
+                browserHistory.push('http://localhost:3000/');
+            },
             (err) => this.setState({errors : err.response.data, isLoading : false})
         );
     }
@@ -88,7 +95,8 @@ class SignupForm extends React.Component {
 }
 
 SignupForm.propTypes = {
-    userSignupRequest : React.PropTypes.func.isRequired
+    userSignupRequest : React.PropTypes.func.isRequired,
+    addFlashMessage: React.PropTypes.func.isRequired
 }
 
 export default SignupForm;

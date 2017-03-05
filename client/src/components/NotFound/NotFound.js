@@ -3,7 +3,10 @@ import React, {Component} from 'react';
 class App extends Component {
     render() {
         return (
-            <h1>404 Page Not Found</h1>
+            <div className="jumbotron">
+
+            <h2>404 Page Not Found</h2>
+            </div>
         );
     }
 }

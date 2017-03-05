@@ -12,7 +12,7 @@ app.use((req, res, next) => {
     req.db = db;
     next();
 });
-
+//allows for cross-domain requests
 app.use(corser.create());
 
 app.use(bodyParser.json());
@@ -24,7 +24,6 @@ app.post('/api', (req, res) => {
     console.log(req.body);
     res.send('OK');
 });
-
 
 //users API
 
