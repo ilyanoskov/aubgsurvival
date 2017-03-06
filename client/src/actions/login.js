@@ -2,6 +2,6 @@ import axios from 'axios';
 
 export function login(data) {
     return dispatch => {
-        return axios.post('/api/auth', data);
+        return axios.post('http://localhost:3001/api/auth', data);
     };
 }

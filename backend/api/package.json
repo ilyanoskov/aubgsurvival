@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/ilyanoskov/aubgsurvival#readme",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "bluebird": "^3.4.7",
     "body-parser": "^1.17.0",
     "corser": "^2.0.1",
     "express": "^4.14.1",
+    "jsonwebtoken": "^7.3.0",
     "knex": "^0.12.7",
     "lodash": "^4.17.4",
     "mongo-client": "^0.2.1",

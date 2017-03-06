@@ -7,6 +7,7 @@ const mongoClient = require('mongodb').mongoClient;
 const monk = require('monk');
 const db = monk('localhost:27017/aubgsurvival', console.log('DB connected'));
 const corser = require('corser');
+const auth = require('./auth');
 
 app.use((req, res, next) => {
     req.db = db;
@@ -29,6 +30,7 @@ app.post('/api', (req, res) => {
 
 app.get('/api/users', users.users);
 app.post('/api/users/register', users.register);
-app.get('/api/users/login', users.login);
+
+app.post('/api/auth', auth.auth);
 
 app.listen(3001, console.log('Listening on the port 3001'));

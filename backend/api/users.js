@@ -108,22 +108,3 @@ module.exports.register = async(req, res) => {
         }
     }
 };
-
-module.exports.login = async(req, res) => {
-    let db = req.db;
-    let found;
-    try {
-        found = await db.collection('users').find({login: req.headers.login});
-        if (found.length > 0) {
-            if (req.headers.password === found[0].password) {
-                res.status(200).send('correct password');
-            } else {
-                res.status(400).send('incorrect password');
-            }
-        } else {
-            res.status(401).send('user does not exist')
-        };
-    } catch (ex) {
-        console.error(ex);
-    }
-};
