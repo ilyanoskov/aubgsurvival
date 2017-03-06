@@ -1,8 +1,29 @@
 import React, {PropTypes} from 'react';
-import {Link, IndexLink} from 'react-router';
+import {Link, IndexLink, browserHistory} from 'react-router';
+import { connect } from 'react-redux';
+import { logout } from '../../actions/authActions';
 
 class Header extends React.Component {
+    logout(e) {
+        e.preventDefault();
+        this.props.logout();
+        browserHistory.push('/');
+    }
     render () {
+        const { isAuthenticated } = this.props.auth;
+
+        const userLinks = (
+            <ul className="nav navbar-nav navbar-right">
+              <li><a href="#" onClick={this.logout.bind(this)}>Log Out</a></li>
+            </ul>
+        );
+
+        const guestLinks = (
+            <ul className="nav navbar-nav navbar-right">
+              <li><Link to="/register">Sign Up</Link></li>
+              <li><Link to="/login">Login</Link></li>
+            </ul>
+        );
         return (
             <nav className="navbar navbar-inverse">
               <div className="container-fluid">
@@ -12,14 +33,12 @@ class Header extends React.Component {
                 </div>
                 {/* Collect the nav links, forms, and other content for toggling */}
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul className="nav navbar-nav">
-                    <li><Link to="/register">Sign Up</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                  </ul>
+                    <ul className="nav navbar-nav">
+                      <li><Link to="/">Arena</Link></li>
+                      <li><Link to="/about">About</Link></li>
+                    </ul>
+                    {isAuthenticated ? userLinks : guestLinks}
 
-                  <ul className="nav navbar-nav navbar-right">
-                    <li><a href="#">Sign Out</a></li>
-                  </ul>
                 </div>{/* /.navbar-collapse */}
               </div>{/* /.container-fluid */}
             </nav>
@@ -27,4 +46,15 @@ class Header extends React.Component {
     }
 };
 
-export default Header;
+Header.propTypes = {
+    auth : React.PropTypes.object.isRequired,
+    logout : React.PropTypes.func.isRequired
+}
+
+function mapStateToProps(state) {
+    return {
+        auth: state.auth
+    };
+}
+
+export default connect(mapStateToProps, { logout } )(Header);
