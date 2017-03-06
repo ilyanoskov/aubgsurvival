@@ -3,13 +3,13 @@ import TextFieldGroup from '../common/TextFieldGroup';
 import validateInput from './loginValidation';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { login } from '../../actions/login';
+import { login } from '../../actions/authActions';
 
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            indentifier : '',
+            identifier : '',
             password : '',
             errors : {},
             isLoading : false

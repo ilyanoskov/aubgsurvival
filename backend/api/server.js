@@ -13,8 +13,11 @@ app.use((req, res, next) => {
     req.db = db;
     next();
 });
-//allows for cross-domain requests
-app.use(corser.create());
+//allows for cross-domain requests AND authorization headers
+app.use(corser.create({
+    supportsCredentials : true,
+    requestHeaders: corser.simpleRequestHeaders.concat(["Authorization"])
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
