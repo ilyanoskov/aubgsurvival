@@ -13,9 +13,14 @@ class Header extends React.Component {
         const { isAuthenticated } = this.props.auth;
 
         const userLinks = (
-            <ul className="nav navbar-nav navbar-right">
-              <li><a href="#" onClick={this.logout.bind(this)}>Log Out</a></li>
+        <div>
+            <ul className="nav navbar-nav">
+              <li><Link to="/kill">Kill</Link></li>
             </ul>
+            <ul className="nav navbar-nav navbar-right">
+                <li><a href="#" onClick={this.logout.bind(this)}>Log Out</a></li>
+            </ul>
+        </div>
         );
 
         const guestLinks = (
@@ -34,8 +39,7 @@ class Header extends React.Component {
                 {/* Collect the nav links, forms, and other content for toggling */}
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav">
-                      <li><Link to="/">Arena</Link></li>
-                      <li><Link to="/about">About</Link></li>
+                      <li><Link to="/about">Rules</Link></li>
                     </ul>
                     {isAuthenticated ? userLinks : guestLinks}
 
