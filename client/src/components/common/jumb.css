@@ -1,0 +1,10 @@
+.jumbotron {
+    background-image: url("http://cdn.pcwallart.com/images/gradient-blue-to-white-wallpaper-1.jpg");
+    background-color: #17234E;
+    margin-bottom: 0;
+    min-height: 50%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
