@@ -20,8 +20,18 @@ const userSchema = new Schema({
     isKilled : {
         type : Boolean,
         required : true
+    },
+    kills : {
+        type : Number,
+        required : true
     }
 });
+
+//TODO : figure this out!!
+userSchema.statics.getAliveUsers = (err) => {
+    if (err) return err;
+    else return this.find();
+}
 
 //finalize by creating a mongoose model that will handle users
 const User = mongoose.model('User', userSchema);

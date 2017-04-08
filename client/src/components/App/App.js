@@ -7,7 +7,7 @@ import Jumbotrons from '../common/Jumbotron';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="b">
         <FlashMessagesList />
         {this.props.children}
       </div>

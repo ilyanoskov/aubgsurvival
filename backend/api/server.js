@@ -33,6 +33,8 @@ app.use(bodyParser.urlencoded({
 //error wrapper, courtesy to Spanish guys
 app.use((error, request, response, next) => {
     response.status(400).send('Oops there was an error, ask administrator');
+    console.log(error);
+    next();
 })
 
 app.post('/api', (req, res) => {
@@ -44,6 +46,7 @@ app.post('/api', (req, res) => {
 
 app.get('/api/users', users.users);
 app.post('/api/users/register', users.register);
+app.delete('/api/users', users.delete); //DEV ONLY!
 
 //Auth
 app.post('/api/auth', auth.auth);

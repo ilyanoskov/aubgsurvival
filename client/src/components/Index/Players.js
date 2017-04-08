@@ -1,39 +1,30 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 class Players extends React.Component {
     render() {
-        return (
-            <div className="col-lg-3 col-md-3 col-sm-3">
-                <div className="panel panel-body hidden-xs" style={{background : 343434}}></div>
-            <div className="panel panel-default">
-                <div className="panel-heading">
-                    Players
-                </div>
-                <div className="panel-body">
-                    <div className="panel panel-default panel-body">
-                        Hello
-                    </div>
-                    <div className="panel panel-default panel-body">
-                        Hello
-                    </div>
-                    <div className="panel panel-default panel-body">
-                        Hello
-                    </div>
-                    <div className="panel panel-default panel-body">
-                        Hello
-                    </div>
-                    <div className="panel panel-default panel-body">
-                        Hello
-                    </div>
-                    <div className="panel panel-default panel-body">
-                        Hello
-                    </div>
-                </div>
+        return(
+            <div >
+                {
 
+                    this.props.players.map(player => {
+                    return (
+                        <div className="panel panel-body panel-info" key={player.id}>
+                            <span>{player.name}</span>
+                        </div>
+                    )
+                })}
             </div>
-            </div>
+
         )
     }
+
 }
 
-export default Players;
+function mapStateToProps(state) {
+    console.log(state);
+    return {players : state.players}
+}
+
+//connect to state
+export default connect(mapStateToProps)(Players);

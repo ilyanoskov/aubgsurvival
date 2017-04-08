@@ -1,12 +1,22 @@
-.jumbotron {
-    background-color: #000000;
-    background-color:rgba(0, 0, 0, 0.2);
-    background-image: url("http://maxpixel.freegreatpicture.com/static/photo/2x/Universe-Background-Nebula-10-All-Space-Cosmos-1530144.png");
-
+.b {
+    background-color: #00000000;
+    background-color:rgba(0, 0, 0, 0);
+    background: url('./web1.png') no-repeat;
     margin-bottom: 0;
     min-height: 50%;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.jumbotron {
+    background-color: #00000000;
+    background-color:rgba(0, 0, 0, 0);
+    margin-bottom: 0;
+    min-height: 50%;
+    background-repeat: no-repeat;
+    background-position: top;
     -webkit-background-size: cover;
     background-size: cover;
 }

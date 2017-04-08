@@ -19,7 +19,8 @@ const userBuilder = (body) => {
         email : body.email,
         password : body.password,
         passwordConfirmation : body.passwordConfirmation,
-        isKilled : false
+        isKilled : false,
+        kills : 0
     });
     return user;
 }
@@ -76,15 +77,37 @@ const validateInput = async (req) => {
 
 // Get all users in the database, useful for debugging
 module.exports.users = async(req, res) => {
-    let db = req.db;
     let response;
     try {
-        response = await User.find();
+        response = await User.find({})
     } catch (ex) {
         console.error(ex);
+        res.send(ex);
     }
+
+    //strip away all sensitive data, leave out only kills and name
+    response = response.map(user => {
+        return {
+            name : user.name,
+            kills : user.kills,
+            id : user._id,
+            isKilled : user.isKilled
+        }
+    })
+
     res.send(response);
 };
+
+module.exports.delete = async(req, res) => {
+    let response;
+    try {
+        response = await User.remove({});
+    } catch (ex) {
+        console.error(ex);
+        res.send(ex);
+    }
+    res.send(response);
+}
 
 // Register a new user
 /*

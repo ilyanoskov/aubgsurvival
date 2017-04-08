@@ -17,19 +17,6 @@ class Index extends React.Component {
     }
 }
 
-class Event extends React.Component {
-    render() {
-        return (
-            <div className="panel panel-default">
-                <div className="well">
-                    Ilya killed You
-                </div>
-            </div>
-        );
-    }
-}
-
-
 
 
 export default Index;

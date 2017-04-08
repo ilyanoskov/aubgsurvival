@@ -1,16 +1,15 @@
 import React from 'react';
-import Scoreboard from './Scoreboard';
-import Events from './Events';
-import Players from './Players';
-
+import ScoreboardColumn from './ScoreboardColumn';
+import EventsColumn from './EventsColumn';
+import PlayersColumn from './PlayersColumn';
 
 class Columns extends React.Component {
     render() {
         return (
             <div>
-                    <Scoreboard />
-                    <Events />
-                    <Players />
+                <PlayersColumn/>
+                <EventsColumn/>
+                <ScoreboardColumn/>
             </div>
         )
     }

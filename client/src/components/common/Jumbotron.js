@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import {logout} from '../../actions/authActions';
 import {Jumbotron} from 'react-bootstrap';
 import Rules from '../common/Rules';
+import './jumb.css'
+import logo from './logo-big.png';
+import logo2 from './logo-comehere.png';
 
 class Jumbotrons extends React.Component {
     logout(e) {
@@ -53,20 +56,18 @@ class Jumbotrons extends React.Component {
         return (
             <div>
                 <Jumbotron>
-                    <h3 style={{
-                        textAlign: 'center'
-                    }}>
-                        Come here. Die anywhere.
-                    </h3>
-                    <h1 style={{
-                        textAlign: 'center'
-                    }}>
-                        AUBG Survival
-                    </h1>
+                    <div className="text-center">
+                    <img src={logo2} />
+                    </div>
+                    <h5>&#8192;</h5>
+                    <div className="text-center">
+                    <img src={logo} />
+                    </div>
+                    <h2>&#8192;</h2>
                     {isAuthenticated
                         ? userLinks
                         : guestLinks}
-                    <h7>&#8192;</h7>
+                    <h1>&#8192;</h1>
                 </Jumbotron>
             </div>
         );

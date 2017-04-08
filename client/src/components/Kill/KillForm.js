@@ -28,7 +28,7 @@ class KillForm extends React.Component {
     render() {
         const { victimId, errors, isLoading } = this.state;
         return (
-            <div className="jumbotron">
+            <div className="well">
                 <form onSubmit={this.onSubmit}>
                         <h2> Killed your Victim? </h2>
                         <h4> Enter victim code below. </h4>
