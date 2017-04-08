@@ -25,6 +25,10 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use((error, request, response, next) => {
+    response.status(400).send('Oops there was an error, ask administrator');
+})
+
 app.post('/api', (req, res) => {
     console.log(req.body);
     res.send('OK');

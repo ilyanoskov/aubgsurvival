@@ -30,7 +30,7 @@ class Header extends React.Component {
             </ul>
         );
         return (
-            <nav className="navbar navbar-inverse">
+            <nav className="navbar navbar-static-top navbar-default">
               <div className="container-fluid">
                 {/* Brand and toggle get grouped for better mobile display */}
                 <div className="navbar-header">

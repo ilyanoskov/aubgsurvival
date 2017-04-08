@@ -1,10 +1,12 @@
 .jumbotron {
-    background-image: url("http://cdn.pcwallart.com/images/gradient-blue-to-white-wallpaper-1.jpg");
-    background-color: #17234E;
+    background-color: #000000;
+    background-color:rgba(0, 0, 0, 0.2);
+    background-image: url("http://maxpixel.freegreatpicture.com/static/photo/2x/Universe-Background-Nebula-10-All-Space-Cosmos-1530144.png");
+
     margin-bottom: 0;
     min-height: 50%;
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: center;
     -webkit-background-size: cover;
     background-size: cover;
 }

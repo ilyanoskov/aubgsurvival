@@ -17,7 +17,7 @@ class KillForm extends React.Component {
     }
 
     onChange(e) {
-        this.setState({ [e.target.name] : e.target.name });
+        this.setState({ [e.target.name] : e.target.value });
     }
 
     onSubmit(e) {
@@ -36,13 +36,13 @@ class KillForm extends React.Component {
 
                     <TextFieldGroup
                         field="title"
-                        label="Kill"
+                        label="💀"
                         name="title"
                         value={title}
                         onChange={this.onChange}
                         errror={errors.title}
                     />
-                <button type="submit" className="btn btn-danger"> Kill </button>
+                <button type="submit" className="btn btn-danger"> Claim </button>
                 </form>
             </div>
 
