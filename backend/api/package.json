@@ -24,10 +24,9 @@
     "corser": "^2.0.1",
     "express": "^4.14.1",
     "jsonwebtoken": "^7.3.0",
-    "knex": "^0.12.7",
     "lodash": "^4.17.4",
     "mongo-client": "^0.2.1",
-    "monk": "^4.0.0",
+    "mongoose": "^4.9.3",
     "validator": "^7.0.0"
   }
 }

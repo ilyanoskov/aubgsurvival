@@ -8,6 +8,8 @@ const supersecret = require('./supersecret');
 //
 // } else ERROR
 
+const User = require('./models/User');
+
 const token = (user) => {
         let tok = jwt.sign({
             id: user._id,
@@ -16,12 +18,13 @@ const token = (user) => {
         return tok;
 }
 
+//main authentication procedure
 module.exports.auth = async(req, res) => {
     let db = req.db;
     let found;
     console.log(req.body);
     try {
-        found = await db.collection('users').find({email: req.body.identifier});
+        found = await User.find({email: req.body.identifier});
         if (found.length > 0) {
             if (req.body.password === found[0].password) {
                 res.status(200).json({token : token(found[0])});

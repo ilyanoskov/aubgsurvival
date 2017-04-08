@@ -1,20 +1,26 @@
 const Validator = require('validator');
 const _ = require('lodash');
 
+//load User model
+const User = require('./models/User');
+
 //Checks if a user exists in a database
-const userExists = async(db, name) => {
+//TODO : ERROR HANDLING
+const userExists = async(db, email) => {
     let found = [];
-    found = await db.collection('users').find({name: name});
+    found = await User.find({email: email});
     return (!_.isEmpty(found));
 }
 
-//builds a new user profile, stripping down unnecessary front-end stuff
+//builds a new user profile
 const userBuilder = (body) => {
-    let user = {};
-    user.name = body.name;
-    user.email = body.email;
-    user.password = body.password;
-    user.passwordConfirmation = body.passwordConfirmation;
+    let user = new User({
+        name : body.name,
+        email : body.email,
+        password : body.password,
+        passwordConfirmation : body.passwordConfirmation,
+        isKilled : false
+    });
     return user;
 }
 
@@ -30,7 +36,7 @@ const validateInput = async (req) => {
         errors.name =
         'This field is required';
     } else {
-        let userExist = await userExists(db, data.name);
+        let userExist = await userExists(db, data.email);
         if (userExist) {
             console.log('user exists');
         errors.name = 'User exists';
@@ -73,7 +79,7 @@ module.exports.users = async(req, res) => {
     let db = req.db;
     let response;
     try {
-        response = await db.collection('users').find();
+        response = await User.find();
     } catch (ex) {
         console.error(ex);
     }
@@ -88,6 +94,7 @@ module.exports.users = async(req, res) => {
 3. Upload to database
 */
 
+//TODO : Better error handling
 module.exports.register = async(req, res) => {
     // all validations happen here
     const {errors, isValid} = await validateInput(req);
@@ -98,7 +105,7 @@ module.exports.register = async(req, res) => {
         let db = req.db;
         //user creation logic
         try {
-            let response = await db.collection('users').insert(userBuilder(req.body));
+            let response = await (userBuilder(req.body).save(err => {if (err) throw err}));
             console.log('User created');
             console.log(response);
             res.status(200).send('User created succesfully');

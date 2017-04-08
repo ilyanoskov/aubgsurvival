@@ -7,7 +7,7 @@ class KillForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title : '',
+            victimId : '',
             errors : {},
             isLoading : false
         };
@@ -26,8 +26,7 @@ class KillForm extends React.Component {
     }
 
     render() {
-        const { title, errors, isLoading } = this.state;
-
+        const { victimId, errors, isLoading } = this.state;
         return (
             <div className="jumbotron">
                 <form onSubmit={this.onSubmit}>
@@ -35,10 +34,10 @@ class KillForm extends React.Component {
                         <h4> Enter victim code below. </h4>
 
                     <TextFieldGroup
-                        field="title"
+                        field="victimId"
                         label="💀"
-                        name="title"
-                        value={title}
+                        name="victimId"
+                        value={victimId}
                         onChange={this.onChange}
                         errror={errors.title}
                     />
