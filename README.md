@@ -5,9 +5,11 @@ In the future I plan to write React Native applications using this codebase.
 
 # Technology Stack
 
-### NodeJS + Express.js / .NET CORE
+### NodeJS + Express.js 
 ### React + Redux
-### Something SQL
+### MongoDB
+
+Featuring Docker, Mocha to make things a bit smoother
 
 # Installation
 ```git clone https://github.com/ilyanoskov/aubgsurvival ```
@@ -16,7 +18,8 @@ In the future I plan to write React Native applications using this codebase.
 
 ```npm install```
 
-Once everything becomes stable enough we will deploy this app to Azure
+```npm start```
 
-Let's try to keep things simple, write documentation before commiting the code and keep features and branches separate
+The front end app will be running on localhost:3000
+
 
