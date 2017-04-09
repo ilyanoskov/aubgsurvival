@@ -3,44 +3,96 @@ import * as actions from '../../actions/players';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-
 class Scores extends React.Component {
     componentWillMount() {
         this.props.actions.getAlivePlayers();
     }
 
+    /*
+<div className="container-fluid" key={player.id}>
+    <div className="row">
+        <div className="col-lg-7 col-xs-7">
+            {
+                player.isKilled ?
+                <p className="text-danger">{player.name}</p> :
+                <p className="text-success">{player.name}</p>
+            }
+        </div>
+        <div className="badge">
+            {player.kills} kills
+        </div>
+        <hr />
+    </div>
+</div>
+*/
 
     render() {
-    //In this component we display ONLY alive users
-    //sort in descending order :
-    this.props.players.sort((a,b) => (a.kills < b.kills) ? 1 : ((b.kills < a.kills) ? -1 : 0))
+
+        //sort in descending order :
+        this.props.players.sort((a, b) => (a.kills < b.kills)
+            ? 1
+            : ((b.kills < a.kills)
+                ? -1
+                : 0));
+        let players = this.props.players.slice(0, -1);
         return (
             <div>
-                {
-                    /*Render only 10 elements:*/
-
-                    this.props.players.map(player => {
-                    if (player.isKilled === false)
+                {players.map(player => {
                     return (
-                        <div className="panel panel-body panel-default" key={player.id}>
-                            <span> {player.name} : {player.kills} </span>
+                        <div className="container-fluid" key={player.id}>
+                            <div className="row">
+                                <div className="col-lg-7 col-xs-7">
+                                    {player.isKilled
+                                        ? <p className="text-danger">
+                                                {player.name}
+                                            </p>
+                                        : <p className="text-success">
+                                            {player.name}
+                                        </p>
+                                    }
+                                </div>
+                                <div className="badge">
+                                    {player.kills} kills
+                                </div>
+                                <hr/>
+                            </div>
                         </div>
                     )
                 })
             }
+            <div>
+            {
+                <div className="container-fluid" key={players.slice(-1)[0].id}>
+                    <div className="row">
+                        <div className="col-lg-7 col-xs-7">
+                            {this.props.players.slice(-1)[0].isKilled
+                                ? <p className="text-danger">
+                                        {this.props.players.slice(-1)[0].name}
+                                    </p>
+                                : <p className="text-success">
+                                    {this.props.players.slice(-1)[0].name}
+                                </p>
+                            }
+                        </div>
+                        <div className="badge">
+                            {this.props.players.slice(-1)[0].kills} kills
+                        </div>
+                    </div>
+                </div>
+            }
             </div>
-        )
+            </div>
+        );
     }
 }
 
 function mapStateToProps(state) {
-    console.log(state);
-    return {players : state.players}
+    return {players: state.players}
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions : bindActionCreators(actions, dispatch)
+        actions: bindActionCreators(actions, dispatch)
     }
 }
 

@@ -16,3 +16,22 @@
 
 .murder-panel {
 }
+
+
+#hover-content {
+    display:none;
+}
+
+#hover-me:hover #hover-content {
+    display:block;
+}
+
+.player-panel {
+    background-image: none;
+    background-color : #ecf0f1;
+}
+
+.vcenter {
+    vertical-align: middle;
+    float: none;
+}

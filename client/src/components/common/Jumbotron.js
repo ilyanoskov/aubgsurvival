@@ -66,11 +66,12 @@ class Jumbotrons extends React.Component {
                     <h1 className="visible-xs">AUBG Survival</h1>
                     </div>
                     <h2>&#8192;</h2>
-                    {isAuthenticated
+                    <div className="text-center">
+                    <button className="btn btn-default"> Rules</button>
+                    </div>
+            {/*isAuthenticated
                         ? userLinks
-                        : guestLinks}
-                    <h1>&#8192;</h1>
-                    <h3 style={{textAlign:"center"}}>Your Victim Is: Snoop Dogg</h3>
+                        : guestLinks */}
                 </Jumbotron>
             </div>
         );

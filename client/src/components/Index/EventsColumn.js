@@ -11,21 +11,29 @@ class EventsColumn extends React.Component {
 
     render() {
         return (
-            <div className="col-lg-4 col-md-4 col-sm-4">
-                <div className="panel">
-                    <div className="panel-heading custom-panel-heading">
+            <div className="col-lg-4 col-md-4 col-sm-4 panel panel-body player-panel">
+                    <div className="panel-heading panel-default player-panel">
                         <h2 style={{textAlign:"center"}}>📰 Events</h2>
                     </div>
-                    <div className="panel-body custom-panel">
+                    <div className="panel-default panel-body panel">
                         <Murder />
+                        <hr />
                         <Murder />
+                        <hr />
                         <Murder />
+                        <hr />
                         <Murder />
+                        <hr />
                         <Murder />
+                        <hr />
                         <Murder />
+                        <hr />
                         <Murder />
+                        <hr />
                         <Murder />
+                        <hr />
                         <Murder />
+                        <hr />
                         <Murder />
                 </div>
 
@@ -35,7 +43,6 @@ class EventsColumn extends React.Component {
                             show more
                         </small>
                     </div>
-                </div>
                 </div>
             </div>
         )

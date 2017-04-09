@@ -12,24 +12,25 @@ class ScoreboardColumn extends React.Component {
     render() {
         return (
             <div className="col-lg-3 col-md-3 col-sm-3 custom-column">
-            <div className="panel panel-default">
-                <div className="panel-heading panel-default">
-                <h2 style={{textAlign:"center"}}>🏆 Scoreboard</h2>
-                </div>
-                <div className="panel-body text-center">
-                    {/*ALL PLAYERS STUFF GOES HERE*/}
-                    <Scores />
-                </div>
-                <div className="panel-footer" onClick={this.handleClick}>
-                    <div className="text-center">
-                        <small>
-                            show more
-                        </small>
+                <div className="player-panel panel-body">
+                    <div className="panel-heading panel-default">
+                        <h2 style={{
+                            textAlign: "center"
+                        }}>🏆 Scoreboard</h2>
                     </div>
+                    <div className="panel panel-body panel-default text-center">
+                        {/*ALL PLAYERS STUFF GOES HERE*/}
+                        <Scores/>
+                    </div>
+                    <div className="panel-footer" onClick={this.handleClick}>
+                        <div className="text-center">
+                            <small>
+                                show more
+                            </small>
+                        </div>
+                    </div>
+
                 </div>
-
-
-            </div>
             </div>
         )
     }
