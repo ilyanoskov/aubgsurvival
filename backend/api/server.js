@@ -10,7 +10,7 @@ const kill = require('./kill');
 const authenticate = require('./middleware/authenticate.js').auth;
 
 const mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://localhost/aubgsurvival');
+const db = mongoose.connect('mongodb://10.253.95.1/aubgsurvival');
 
 //wrap DB inside req for easy database retrieval
 app.use((req, res, next) => {

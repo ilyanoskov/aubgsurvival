@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
         if (this.isValid()) {
             this.setState({ errors : {}, isLoading : true });
             this.props.login(this.state).then(
-            (res) => browserHistory.push('http://localhost:3000'),
+            (res) => browserHistory.push('/'),
             (err) => this.setState({errors: err.response.data.errors, isLoading : false })
             );
 

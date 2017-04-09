@@ -44,7 +44,7 @@ class SignupForm extends React.Component {
                     type : 'success',
                     text : 'Registration is successful! Get ready for Hunting!'
                 });
-                browserHistory.push('http://localhost:3000/');
+                browserHistory.push('/');
             },
             (err) => this.setState({errors : err.response.data, isLoading : false})
         );

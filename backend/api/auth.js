@@ -13,7 +13,11 @@ const User = require('./models/User');
 const token = (user) => {
         let tok = jwt.sign({
             id: user._id,
-            name : user.name
+            name : user.name,
+            kills : user.kills,
+            isKilled : user.isKilled,
+            victim : 'SEND NUDES',
+            code : 'PUSSYDESTROYER3000'
         }, supersecret.jwtSecret);
         return tok;
 }
