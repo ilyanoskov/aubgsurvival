@@ -12,15 +12,12 @@ class PlayersColumn extends React.Component {
 
     render() {
         return (
-            <div className="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1">
-            {/* one dummy panel to create spacing, a lá quick'n'dirty */}
-            <div className="panel panel-body hidden-xs" style={{background : 343434}}></div>
-
+            <div className="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 hidden-xs custom-column">
             <div className="panel panel-default">
-                <div className="panel-heading">
+                <div className="panel-heading panel-default">
                     <h2 style={{textAlign:"center"}}>🦄 Players</h2>
                 </div>
-                <div className="panel-body">
+                <div className="panel-body text-cente ">
                     <Stats />
                     <Players />
                 </div>

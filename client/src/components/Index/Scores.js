@@ -22,7 +22,7 @@ class Scores extends React.Component {
                     this.props.players.map(player => {
                     if (player.isKilled === false)
                     return (
-                        <div className="panel panel-body panel-info" key={player.id}>
+                        <div className="panel panel-body panel-default" key={player.id}>
                             <span> {player.name} : {player.kills} </span>
                         </div>
                     )

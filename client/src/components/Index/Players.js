@@ -9,7 +9,7 @@ class Players extends React.Component {
 
                     this.props.players.map(player => {
                     return (
-                        <div className="panel panel-body panel-info" key={player.id}>
+                        <div className="panel panel-body panel-default" key={player.id}>
                             <span>{player.name}</span>
                         </div>
                     )

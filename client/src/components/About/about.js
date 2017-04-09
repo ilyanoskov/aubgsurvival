@@ -1,9 +1,14 @@
 import React from 'react';
+import Header from '../common/Header';
 
 class About extends React.Component {
   render() {
     return (
-      <div className="jumbotron">
+      <div>
+          <Header />
+          <div className="well">
+
+
               <h1>Rules</h1>
               <h3>General</h3>
               <p>
@@ -31,6 +36,7 @@ class About extends React.Component {
               Every participant has to kill the victim by himself!
               If any player is suspicious about someone breaking the rules, he/she can always contact Dinara Zhubaniyaz through dnz120@aubg.bg or Facebook page
           </p>
+      </div>
       </div>
     );
   }

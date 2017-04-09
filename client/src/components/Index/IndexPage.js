@@ -3,6 +3,9 @@ import NavigationBar from '../common/Header';
 import Rules from '../common/Rules';
 import Jumbotrons from '../common/Jumbotron';
 import Columns from './Columns';
+import './events.css';
+import Footer from '../common/Footer';
+
 
 class Index extends React.Component {
     render() {
@@ -11,6 +14,7 @@ class Index extends React.Component {
                 <div className="row">
                     <Jumbotrons/>
                     <Columns />
+                    <Footer />
                 </div>
             </div>
         );

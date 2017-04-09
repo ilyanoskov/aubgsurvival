@@ -11,13 +11,12 @@ class ScoreboardColumn extends React.Component {
 
     render() {
         return (
-            <div className="col-lg-3 col-md-3 col-sm-3">
-                <div className="panel panel-body hidden-xs" style={{background : 343434}}></div>
+            <div className="col-lg-3 col-md-3 col-sm-3 custom-column">
             <div className="panel panel-default">
-                <div className="panel-heading">
+                <div className="panel-heading panel-default">
                 <h2 style={{textAlign:"center"}}>🏆 Scoreboard</h2>
                 </div>
-                <div className="panel-body">
+                <div className="panel-body text-center">
                     {/*ALL PLAYERS STUFF GOES HERE*/}
                     <Scores />
                 </div>

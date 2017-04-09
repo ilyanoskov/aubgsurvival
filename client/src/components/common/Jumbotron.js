@@ -46,7 +46,7 @@ class Jumbotrons extends React.Component {
                 </div>
                 <div className="col-lg-1 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-3">
                     <Link to="/register">
-                        <button className="btn btn-default">
+                        <button className="btn btn-default register">
                             Register</button>
                     </Link>
                 </div>
@@ -57,17 +57,20 @@ class Jumbotrons extends React.Component {
             <div>
                 <Jumbotron>
                     <div className="text-center">
-                    <img src={logo2} />
+                    <img src={logo2} className="hidden-xs" />
+                    <h4 className="visible-xs">Come here. Die Anywhere.</h4>
                     </div>
                     <h5>&#8192;</h5>
                     <div className="text-center">
-                    <img src={logo} />
+                    <img src={logo} className="hidden-xs"/>
+                    <h1 className="visible-xs">AUBG Survival</h1>
                     </div>
                     <h2>&#8192;</h2>
                     {isAuthenticated
                         ? userLinks
                         : guestLinks}
                     <h1>&#8192;</h1>
+                    <h3 style={{textAlign:"center"}}>Your Victim Is: Snoop Dogg</h3>
                 </Jumbotron>
             </div>
         );

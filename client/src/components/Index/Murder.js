@@ -9,7 +9,7 @@ const getRandomEmoji = () => {
 class Murder extends React.Component {
     render() {
         return(
-            <div className="panel panel-body panel-default">
+            <div className="panel panel-body panel-default murder-panel">
                 <table style={{
                     width: "100%",
                     textAlign: "center"
