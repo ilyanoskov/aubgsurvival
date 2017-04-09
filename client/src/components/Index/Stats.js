@@ -4,7 +4,7 @@ class Stats extends React.Component {
     render() {
         return (
             <div>
-            <div className="panel panel-default panel-body container-fluid hidden-xs">
+            <div className="panel panel-default panel-body container-fluid">
                 <div className="text-center">
                         <h3>Statistics</h3>
                         <hr />
