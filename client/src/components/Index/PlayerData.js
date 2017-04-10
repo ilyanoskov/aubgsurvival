@@ -42,6 +42,8 @@ class PlayerData extends React.Component {
         browserHistory.push('/kill');
     }
 
+
+    //add suicide functionality here
     suicide(e) {
         e.preventDefault();
         browserHistory.push('/');
@@ -50,7 +52,7 @@ class PlayerData extends React.Component {
     render() {
         {/*
             I have included the Player info here because I could not figure out how to correctly pass logout function
-            I will change it whenever I get better knowledge of Javascript, this works so far though
+            I will change it whenever I get better knowledge of Javascript, this works good so far though
             */
         }
 
@@ -83,8 +85,7 @@ class PlayerData extends React.Component {
                         <div className="row">
                             <div className="col-lg-12">
                                 <h3>{this.props.auth.user.name}
-                                    <small className="badge">{this.props.auth.user.kills}
-                                        kills</small>
+                                    <small className="badge">{this.props.auth.user.kills} kills</small>
                                 </h3>
                                 <hr/>
                             </div>
@@ -113,7 +114,7 @@ class PlayerData extends React.Component {
                                         Your Code :
                                     </small>
                                     <div>
-                                        #123456
+                                        {this.props.auth.user.code}
                                     </div>
                                 </div>
                                 <div className="well well-sm hidden-lg hidden-sm hidden-md">
@@ -121,7 +122,7 @@ class PlayerData extends React.Component {
                                         Your Victim :
                                     </small>
                                     <div>
-                                        SEND NUDES
+                                        {this.props.auth.user.victim}
                                     </div>
                                 </div>
 
@@ -152,7 +153,7 @@ class PlayerData extends React.Component {
                 {isAuthenticated
                     ? <Player/>
                     : <Guest/>
-}
+                }
             </div>
         );
     }
@@ -160,7 +161,6 @@ class PlayerData extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state.auth);
     return {auth: state.auth};
 }
 

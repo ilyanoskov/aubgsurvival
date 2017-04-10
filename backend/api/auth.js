@@ -16,8 +16,8 @@ const token = (user) => {
             name : user.name,
             kills : user.kills,
             isKilled : user.isKilled,
-            victim : 'SEND NUDES',
-            code : 'PUSSYDESTROYER3000'
+            victim : 'VICTIM',
+            code : user.code
         }, supersecret.jwtSecret);
         return tok;
 }

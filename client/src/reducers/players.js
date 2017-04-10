@@ -10,7 +10,6 @@ const getPlayers = (state = initialState, action = {}) => {
             return state;
         case RECEIVE_ALIVE_PLAYERS:
             return action.players;
-
         default:
             return state;
     }

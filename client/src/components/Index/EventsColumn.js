@@ -6,7 +6,7 @@ import {browserHistory} from 'react-router';
 class EventsColumn extends React.Component {
     handleClick(e) {
         e.preventDefault();
-        browserHistory.push('/players');
+        browserHistory.push('/events');
     }
 
     render() {

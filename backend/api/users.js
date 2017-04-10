@@ -1,5 +1,6 @@
 const Validator = require('validator');
 const _ = require('lodash');
+const shortid = require('shortid');
 
 //load User model
 const User = require('./models/User');
@@ -20,8 +21,10 @@ const userBuilder = (body) => {
         password : body.password,
         passwordConfirmation : body.passwordConfirmation,
         isKilled : false,
-        kills : 0
+        kills : 0,
+        code : shortid.generate()
     });
+    console.log(user);
     return user;
 }
 
@@ -75,7 +78,6 @@ const validateInput = async (req) => {
     return {errors, isValid: _.isEmpty(errors)}
 }
 
-// Get all users in the database, useful for debugging
 module.exports.users = async(req, res) => {
     let response;
     try {

@@ -1,5 +1,5 @@
-import React, {PropTypes} from 'react';
-import {Link, IndexLink, browserHistory} from 'react-router';
+import React from 'react';
+import {Link,browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/authActions';
 

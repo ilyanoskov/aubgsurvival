@@ -1,12 +1,11 @@
 import React from 'react';
 import Scores from './Scores'
 import {browserHistory} from 'react-router';
-//here we dispatch a redux action
 
 class ScoreboardColumn extends React.Component {
     handleClick(e) {
         e.preventDefault();
-        browserHistory.push('/players');
+        browserHistory.push('/scoreboard');
     }
 
     render() {

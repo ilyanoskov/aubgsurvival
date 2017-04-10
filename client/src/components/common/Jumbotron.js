@@ -1,5 +1,5 @@
-import React, {PropTypes} from 'react';
-import {Link, IndexLink, browserHistory} from 'react-router';
+import React from 'react';
+import {Link} from 'react-router';
 import {Jumbotron} from 'react-bootstrap';
 import './jumb.css'
 import logo from './logo-big.png';
@@ -11,12 +11,12 @@ class Jumbotrons extends React.Component {
             <div>
                 <Jumbotron>
                     <div className="text-center">
-                    <img src={logo2} className="hidden-xs" />
+                    <img src={logo2} className="hidden-xs" role="presentation"/>
                     <h4 className="visible-xs">Come here. Die Anywhere.</h4>
                     </div>
                     <h5>&#8192;</h5>
                     <div className="text-center">
-                    <img src={logo} className="hidden-xs"/>
+                    <img src={logo} className="hidden-xs" role="presentation"/>
                     <h1 className="visible-xs">AUBG Survival</h1>
                     </div>
                     <h2>&#8192;</h2>

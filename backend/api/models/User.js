@@ -24,6 +24,10 @@ const userSchema = new Schema({
     kills : {
         type : Number,
         required : true
+    },
+    code : {
+        type : String,
+        required : true
     }
 });
 

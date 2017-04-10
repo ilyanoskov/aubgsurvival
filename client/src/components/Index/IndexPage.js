@@ -1,6 +1,4 @@
-import React, {PropTypes} from 'react';
-import NavigationBar from '../common/Header';
-import Rules from '../common/Rules';
+import React from 'react';
 import Jumbotrons from '../common/Jumbotron';
 import Columns from './Columns';
 import './events.css';
@@ -9,7 +7,7 @@ import './events.css';
 class Index extends React.Component {
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid b">
                 <div className="row">
                     <Jumbotrons/>
                     <Columns />

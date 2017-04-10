@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import React from 'react';
 import validateInput from './inputValidation'
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -84,8 +83,8 @@ class SignupForm extends React.Component {
                     field="passwordConfirmation"
                 />
 
-                <div className="form-group">
-                    <button disabled={this.state.isLoading} className="btn btn-primary btn-lg">
+            <div className="form-group text-center">
+                    <button disabled={this.state.isLoading} className="btn btn-primary">
                         Sign up
                     </button>
                 </div>

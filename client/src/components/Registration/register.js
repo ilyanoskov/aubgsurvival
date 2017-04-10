@@ -7,17 +7,18 @@ import Header from '../common/Header';
 
 class Registration extends React.Component {
     render() {
-        const { userSignupRequest, addFlashMessage } = this.props;
+        const {userSignupRequest, addFlashMessage} = this.props;
         return (
             <div>
-
-            <Header />
-            <div className="row">
-                <div className="col-md-4 col-md-offset-4">
-                    <SignupForm userSignupRequest={userSignupRequest} addFlashMessage={addFlashMessage} />
+                <Header/>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="well well-lg col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                            <SignupForm userSignupRequest={userSignupRequest} addFlashMessage={addFlashMessage}/>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
         );
     }
 }
@@ -27,5 +28,4 @@ Registration.propTypes = {
     addFlashMessage: React.PropTypes.func.isRequired
 }
 
-
-export default connect(null, {userSignupRequest, addFlashMessage}) (Registration);
+export default connect(null, {userSignupRequest, addFlashMessage})(Registration);

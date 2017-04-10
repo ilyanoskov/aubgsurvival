@@ -5,26 +5,8 @@ import {bindActionCreators} from 'redux';
 
 class Scores extends React.Component {
     componentWillMount() {
-        this.props.actions.getAlivePlayers();
+        this.props.actions.getPlayers();
     }
-
-    /*
-<div className="container-fluid" key={player.id}>
-    <div className="row">
-        <div className="col-lg-7 col-xs-7">
-            {
-                player.isKilled ?
-                <p className="text-danger">{player.name}</p> :
-                <p className="text-success">{player.name}</p>
-            }
-        </div>
-        <div className="badge">
-            {player.kills} kills
-        </div>
-        <hr />
-    </div>
-</div>
-*/
 
     render() {
 

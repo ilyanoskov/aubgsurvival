@@ -12,7 +12,7 @@ export function receiveAlivePlayers(players) {
     return {type: RECEIVE_ALIVE_PLAYERS, players}
 }
 
-export function getAlivePlayers(players) {
+export function getPlayers(players) {
     return function(dispatch) {
         dispatch(requestAlivePlayers(players));
         return axios.get('http://10.253.95.1:3001/api/users').then(
