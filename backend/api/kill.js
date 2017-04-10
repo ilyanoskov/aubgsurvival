@@ -4,7 +4,6 @@ const User = require('./models/User');
 
 const kill = (req, res) => {
     
-
 }
 
 module.exports.kill = kill;

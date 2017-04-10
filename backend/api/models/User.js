@@ -32,9 +32,17 @@ const userSchema = new Schema({
 });
 
 //TODO : figure this out!!
-userSchema.statics.getAliveUsers = (err) => {
+userSchema.statics.getUserSafe = async (data,err) => {
     if (err) return err;
-    else return this.find();
+    let user = await User.findById(data);
+    if (!user) return;
+    else return {
+        name : user.name,
+        kills : user.kills,
+        isKilled : user.isKilled,
+        email : user.email,
+        victim : 'victim'
+    }
 }
 
 //finalize by creating a mongoose model that will handle users

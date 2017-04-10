@@ -1,3 +1,9 @@
+/*
+Here we have a simple authentication middleware to authenticate the KILL
+
+*/
+
+const User = require('../models/User.js')
 const supersecret = require('../supersecret.js');
 const jwt = require('jsonwebtoken');
 
@@ -14,9 +20,15 @@ module.exports.auth = (req, res, next) => {
             if (err) {
                 res.status(401).json({error : "Failed to authenticate"});
             } else {
-                res.status(201).json({success : "kill!"});
-            }
+                User.getUserSafe(decoded.id).then(user => {
+                    if (!user) {
+                        res.status(404).json({error : 'No such user'});
+                    }
+                    req.currentUser = user;
+                    next();
+                })
 
+            }
         });
     } else {
         res.status(403).json({
