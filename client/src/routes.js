@@ -11,13 +11,15 @@ import KillPage from './components/Kill/KillPage'
 import ScoreboardPage from './components/ScoreboardPage/ScoreboardPage'
 import EventsPage from './components/EventsPage/EventsPage'
 
+import requireAuth from './utils/requireAuth.js';
+
 export default (
     <Route path="/" component={App} >
         <IndexRoute component={Index} />
     <Route path="register" component={Registration} />
     <Route path="login" component={LoginPage} />
     <Route path="about" component={About} />
-    <Route path="kill" component={KillPage} />
+    <Route path="kill" component={requireAuth(KillPage)} />
     <Route path="events" component={EventsPage} />
     <Route path="scoreboard" component={ScoreboardPage} />
     <Route path="*" component={NotFound} />
