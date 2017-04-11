@@ -17,24 +17,6 @@ class EventsColumn extends React.Component {
                     </div>
                     <div className="panel-default panel-body panel">
                         <Murder />
-                        <hr />
-                        <Murder />
-                        <hr />
-                        <Murder />
-                        <hr />
-                        <Murder />
-                        <hr />
-                        <Murder />
-                        <hr />
-                        <Murder />
-                        <hr />
-                        <Murder />
-                        <hr />
-                        <Murder />
-                        <hr />
-                        <Murder />
-                        <hr />
-                        <Murder />
                 </div>
 
                 <div className="panel-footer" onClick={this.handleClick}>

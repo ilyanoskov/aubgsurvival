@@ -1,7 +1,6 @@
 import React from 'react';
 import Scores from './Scores'
 import {browserHistory} from 'react-router';
-
 class ScoreboardColumn extends React.Component {
     handleClick(e) {
         e.preventDefault();

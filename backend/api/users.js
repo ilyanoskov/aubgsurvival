@@ -22,9 +22,8 @@ const userBuilder = (body) => {
         passwordConfirmation : body.passwordConfirmation,
         isKilled : false,
         kills : 0,
-        code : shortid.generate()
+        code : shortid.generate.slice(5)
     });
-    console.log(user);
     return user;
 }
 

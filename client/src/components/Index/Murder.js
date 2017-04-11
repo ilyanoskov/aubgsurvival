@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../../actions/getEvents';
 
 //TODO : make the function "more" random
 const getRandomEmoji = () => {
@@ -41,8 +44,13 @@ const getRandomEmoji = () => {
 }
 
 class Murder extends React.Component {
+    componentWillMount() {
+        this.props.actions.getEvents();
+    }
+
     render() {
         return (
+
                 <div className="">
                     <table style={{
                     width: "100%",
@@ -51,9 +59,9 @@ class Murder extends React.Component {
                         <tbody>
                             <tr>
 
-                                <td>Ilya Noskov</td>
+                                <td>{this.props.events.killer}</td>
                                 <td>   {getRandomEmoji()}   </td>
-                                <td>Your Mom</td>
+                                <td>{this.props.events.victim}</td>
                             </tr>
                         </tbody>
                   </table>
@@ -63,4 +71,16 @@ class Murder extends React.Component {
     }
 }
 
-export default Murder;
+function mapStateToProps(state) {
+    return {
+        events: state.events
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Murder);

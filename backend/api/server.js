@@ -8,9 +8,10 @@ const corser = require('corser');
 const auth = require('./auth');
 const kill = require('./kill');
 const authenticate = require('./middleware/authenticate.js').auth;
+const events = require('./events');
 
 const mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://10.253.95.1/aubgsurvival');
+const db = mongoose.connect('mongodb://localhost/aubgsurvival');
 
 //wrap DB inside req for easy database retrieval
 app.use((req, res, next) => {
@@ -54,6 +55,8 @@ app.post('/api/auth', auth.auth);
 //App functionality
 app.post('/api/kill', authenticate, kill.kill);
 
+//events api
+app.get('/api/events', events.get);
 
 
 

@@ -44,7 +44,7 @@ class PlayerData extends React.Component {
 
 
     //add suicide functionality here
-    suicide(e) {
+    gotKilled(e) {
         e.preventDefault();
         browserHistory.push('/');
     }
@@ -134,7 +134,13 @@ class PlayerData extends React.Component {
                                 </div>
                                 <div className="col-lg-12">
                                     <hr/>
-                                    <button className="btn btn-default btn-block" onClick={this.suicide.bind(this)}>Suicide</button>
+                                    <div id="hover-me">
+                                        <button className="btn btn-info btn-block" onClick={this.gotKilled.bind(this)}>I got killed :(</button>
+                                            <div id="hover-content" style={{"fontSize":"75%"}}>
+                                                <hr />
+                                                <div className=""> Pressing this button will finish your game and give 1 point to your assigned killer.</div>
+                                            </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -150,6 +156,7 @@ class PlayerData extends React.Component {
         //CONIDITIONAL RENDERING
         return (
             <div>
+
                 {isAuthenticated
                     ? <Player/>
                     : <Guest/>
