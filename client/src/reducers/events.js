@@ -1,6 +1,6 @@
 import {REQUEST_EVENTS, RECEIVE_EVENTS} from '../actions/types';
 
-const initialState = {"killer" : "Loading...", "victim" : "Loading..."}
+const initialState = [{"killer" : "Loading...", "victim" : "Loading..."}];
 
 const events = (state = initialState, action = {}) => {
     switch (action.type) {

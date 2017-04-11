@@ -20,6 +20,8 @@ const userBuilder = (body) => {
         email : body.email,
         password : body.password,
         passwordConfirmation : body.passwordConfirmation,
+        victimId : null,
+        victimName : "to be assigned",
         isKilled : false,
         kills : 0,
         code : shortid.generate.slice(5)

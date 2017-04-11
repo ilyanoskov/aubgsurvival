@@ -18,12 +18,12 @@ Kill functionality :
 const kill = async(req, res) => {
     try {
         let e = new Events ({
-            killer: "Ilya Noskov",
+            killer: "Alex ALex",
             victim: "Your Mom",
             time: Date.now()
         });
 
-        e.save;
+        e.save(err => {if (err) throw err});
 
         res.status(200).send('New event created');
     } catch (ex) {

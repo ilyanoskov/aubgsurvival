@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema for user profile
 const userSchema = new Schema({
-    name : String,
+    name : {
+        type : String,
+        required : true
+    },
     email : {
         type : String,
         required : true,
@@ -28,10 +31,16 @@ const userSchema = new Schema({
     code : {
         type : String,
         required : true
+    },
+    victimId : {
+        type : String
+    },
+    victimName : {
+        type : String,
+        required : true
     }
 });
 
-//TODO : figure this out!!
 userSchema.statics.getUserSafe = async (data,err) => {
     if (err) return err;
     let user = await User.findById(data);
@@ -41,7 +50,8 @@ userSchema.statics.getUserSafe = async (data,err) => {
         kills : user.kills,
         isKilled : user.isKilled,
         email : user.email,
-        victim : 'victim'
+        victimId : 'victim',
+        victimName : 'victimName'
     }
 }
 
