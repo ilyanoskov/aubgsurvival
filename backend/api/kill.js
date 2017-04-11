@@ -16,16 +16,41 @@ Kill functionality :
 */
 
 const kill = async(req, res) => {
+    //get the victimId from request
+    let victimId = req.body.victimId;
+    //get the name of the victim to be killed
+    let usersVictimName = req.currentUser.victimName;
+    //find the potential victim by code
+    let victim = await User.find({code : victimId });
+    //if it's not found throw error
+    if (!victim) {
+        console.log('no such victim');
+    } else {
+    //if it's found , compare two names and two codes
+        if (usersVictimName === victim.name) {
+            // now we can actually kill
+            // XXX: KILL FUNCTION HERE
+            console.log('YES!!!!!!!!!!!');
+        }
+    }
+
+    //ADD NEW EVENT
     try {
         let e = new Events ({
-            killer: "Alex ALex",
-            victim: "Your Mom",
+            killer: req.currentUser.name,
+            victim: req.body.victimId,
             time: Date.now()
         });
 
-        e.save(err => {if (err) throw err});
+        e.save(err => {if (err) {
+            res.status(500).send(err);
+            throw err;
+        }
+            else
+            res.status(200).send('New event created');
+        });
 
-        res.status(200).send('New event created');
+
     } catch (ex) {
         console.log(ex);
         res.send(ex);
