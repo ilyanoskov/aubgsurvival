@@ -53,6 +53,7 @@ class PlayerData extends React.Component {
     }
 
     componentWillMount() {
+        this.props.actions.getPersonalData();
     }
 
     render() {
@@ -70,8 +71,8 @@ class PlayerData extends React.Component {
                     <div className="panel panel-default panel-body container-fluid">
                         <div className="row">
                             <div className="col-lg-12">
-                                <h3>{this.props.auth.user.name}
-                                    <small className="badge">{this.props.auth.user.kills}
+                                <h3>{this.props.personal.name}
+                                    <small className="badge">{this.props.personal.user.kills}
                                         kills</small>
                                 </h3>
                                 <hr/>
@@ -91,8 +92,8 @@ class PlayerData extends React.Component {
                     <div className="panel panel-default panel-body container-fluid">
                         <div className="row">
                             <div className="col-lg-12">
-                                <h3>{this.props.auth.user.name}
-                                    <small className="badge">{this.props.auth.user.kills} kills</small>
+                                <h3>{this.props.personal.name}
+                                    <small className="badge">{this.props.personal.kills} kills</small>
                                 </h3>
                                 <hr/>
                             </div>
@@ -102,7 +103,7 @@ class PlayerData extends React.Component {
                                         Your Code
                                     </small>
                                     <div id="hover-content">
-                                        {this.props.auth.user.code}
+                                        {this.props.personal.code}
                                     </div>
                                 </div>
                                 <div id="hover-me" className="well well-sm hidden-xs">
@@ -110,7 +111,7 @@ class PlayerData extends React.Component {
                                         Your Victim
                                     </small>
                                     <div id="hover-content">
-                                        {this.props.auth.user.victimName}
+                                        {this.props.personal.victimName}
                                     </div>
                                 </div>
 
@@ -121,7 +122,7 @@ class PlayerData extends React.Component {
                                         Your Code :
                                     </small>
                                     <div>
-                                        {this.props.auth.user.code}
+                                        {this.props.personal.code}
                                     </div>
                                 </div>
                                 <div className="well well-sm hidden-lg hidden-sm hidden-md">
@@ -129,7 +130,7 @@ class PlayerData extends React.Component {
                                         Your Victim :
                                     </small>
                                     <div>
-                                        {this.props.auth.user.victimName}
+                                        {this.props.personal.victimName}
                                     </div>
                                 </div>
 
@@ -139,7 +140,7 @@ class PlayerData extends React.Component {
                                     </Link>
                                     <button className="btn btn-default" onClick={this.logout.bind(this)}>Log Out</button>
                                 </div>
-                                <div className="col-lg-12">
+                                {/*<div className="col-lg-12">
                                     <hr/>
                                     <div id="hover-me">
                                         <button className="btn btn-info btn-block" onClick={this.gotKilled.bind(this)}>I got killed :(</button>
@@ -148,13 +149,13 @@ class PlayerData extends React.Component {
                                                 <div className=""> Pressing this button will finish your game and give 1 point to your assigned killer.</div>
                                             </div>
                                     </div>
-                                </div>
+                                </div>*/}
                             </div>
                         </div>
                     </div>
                 );
             }
-            return (this.props.auth.user.isKilled
+            return (this.props.personal.isKilled
                 ? <Dead/>
                 : <Alive/>);
         }
@@ -175,7 +176,8 @@ class PlayerData extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {auth: state.auth}
+    return {auth: state.auth,
+            personal : state.personal}
 }
 
 function mapDispatchToProps(dispatch) {

@@ -9,9 +9,9 @@ export function receive_personal(data) {
     return {type: RECEIVE_DATA, data }
 }
 
-export function getPersonalData(events) {
+export function getPersonalData(data) {
     return function(dispatch) {
-        dispatch(request_personal(events));
+        dispatch(request_personal(data));
         return axios.get('http://localhost:3001/api/users/personal').then(
             res => dispatch(receive_personal(res.data)))
     }

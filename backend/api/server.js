@@ -50,7 +50,7 @@ app.post('/api', (req, res) => {
 app.get('/api/users', users.users);
 app.post('/api/users/register', users.register);
 app.delete('/api/users', users.delete); //DEV ONLY!
-app.post('/api/users/personal', authenticate, users.personal);
+app.get('/api/users/personal', authenticate, users.personal);
 
 //Auth
 app.post('/api/auth', auth.auth);
