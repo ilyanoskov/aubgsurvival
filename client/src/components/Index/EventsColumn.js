@@ -18,15 +18,18 @@ class EventsColumn extends React.Component {
                     <div className="panel-default panel-body panel">
                         <Murder />
                 </div>
-
-                <div className="panel-footer" onClick={this.handleClick}>
-                    <div className="text-center">
-                        <small>
-                            show more
-                        </small>
+                {/*
+                    <div className="panel-footer" onClick={this.handleClick}>
+                        <div className="text-center">
+                            <small>
+                                show more
+                            </small>
+                        </div>
                     </div>
+
+                */}
                 </div>
-            </div>
+
         )
     }
 }

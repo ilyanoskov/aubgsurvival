@@ -2,6 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, IndexLink, browserHistory} from 'react-router';
 import {logout} from '../../actions/authActions';
+import {bindActionCreators} from 'redux';
+import * as actions from '../../actions/personal'
+import {assign} from 'lodash';
 
 class Guest extends React.Component {
     render() {
@@ -33,7 +36,7 @@ class PlayerData extends React.Component {
 
     logout(e) {
         e.preventDefault();
-        this.props.logout();
+        this.props.actions.logout();
         browserHistory.push('/');
     }
 
@@ -49,12 +52,16 @@ class PlayerData extends React.Component {
         browserHistory.push('/');
     }
 
+    componentWillMount() {
+    }
+
     render() {
         {/*
             I have included the Player info here because I could not figure out how to correctly pass logout function
             I will change it whenever I get better knowledge of Javascript, this works good so far though
             */
         }
+        console.log(this.props);
 
         const Player = () => {
 
@@ -103,7 +110,7 @@ class PlayerData extends React.Component {
                                         Your Victim
                                     </small>
                                     <div id="hover-content">
-                                        {this.props.auth.user.victim}
+                                        {this.props.auth.user.victimName}
                                     </div>
                                 </div>
 
@@ -122,7 +129,7 @@ class PlayerData extends React.Component {
                                         Your Victim :
                                     </small>
                                     <div>
-                                        {this.props.auth.user.victim}
+                                        {this.props.auth.user.victimName}
                                     </div>
                                 </div>
 
@@ -153,7 +160,7 @@ class PlayerData extends React.Component {
         }
         const {isAuthenticated} = this.props.auth;
         //MAIN RENDER FUNCTION GOES HERE
-        //CONIDITIONAL RENDERING
+        //CONDITIONAL RENDERING
         return (
             <div>
 
@@ -168,8 +175,14 @@ class PlayerData extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {auth: state.auth};
+    return {auth: state.auth}
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(assign({}, {logout}, actions), dispatch)
+    }
 }
 
 //connect to state
-export default connect(mapStateToProps, {logout})(PlayerData);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerData);

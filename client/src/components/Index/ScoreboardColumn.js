@@ -20,13 +20,16 @@ class ScoreboardColumn extends React.Component {
                         {/*ALL PLAYERS STUFF GOES HERE*/}
                         <Scores/>
                     </div>
-                    <div className="panel-footer" onClick={this.handleClick}>
-                        <div className="text-center">
-                            <small>
-                                show more
-                            </small>
+                    {/*
+                        <div className="panel-footer" onClick={this.handleClick}>
+                            <div className="text-center">
+                                <small>
+                                    show more
+                                </small>
+                            </div>
                         </div>
-                    </div>
+                        */}
+
 
                 </div>
             </div>

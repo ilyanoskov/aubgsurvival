@@ -10,6 +10,8 @@ const kill = require('./kill');
 const authenticate = require('./middleware/authenticate.js').auth;
 const events = require('./events');
 
+const victims = require('./victims');
+
 const mongoose = require('mongoose');
 const db = mongoose.connect('mongodb://localhost/aubgsurvival');
 
@@ -48,16 +50,19 @@ app.post('/api', (req, res) => {
 app.get('/api/users', users.users);
 app.post('/api/users/register', users.register);
 app.delete('/api/users', users.delete); //DEV ONLY!
+app.post('/api/users/personal', authenticate, users.personal);
 
 //Auth
 app.post('/api/auth', auth.auth);
 
-//App functionality
-app.post('/api/kill', authenticate, kill.kill);
 
 //events api
 app.get('/api/events', events.get);
+app.delete('/api/events', events.erase);
 
+//gameplay
+app.post('/api/assign', victims.initialAssign);
+app.post('/api/kill', authenticate, kill.kill);
 
 
 app.listen(3001, console.log('Listening on the port 3001'));

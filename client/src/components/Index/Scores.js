@@ -9,7 +9,6 @@ class Scores extends React.Component {
     }
 
     render() {
-
         //sort in descending order :
         this.props.players.sort((a, b) => (a.kills < b.kills)
             ? 1
@@ -19,54 +18,50 @@ class Scores extends React.Component {
         let players = this.props.players.slice(0, -1);
         return (
             <div>
-                {players.map(player => {
-                    return (
-                        <div className="container-fluid" key={player.id}>
-                            <div className="row">
-                                <div className="col-lg-7 col-xs-7">
-                                    {player.isKilled
-                                        ? <p className="text-danger">
-                                                {player.name}
-                                            </p>
-                                        : <p className="text-success">
-                                            {player.name}
-                                        </p>
-                                    }
-                                </div>
-                                <div className="badge">
-                                    {player.kills} kills
-                                </div>
-                                <hr/>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-            <div>
-            {
-                <div className="container-fluid" key={players.slice(-1)[0].id}>
-                    <div className="row">
-                        <div className="col-lg-7 col-xs-7">
-                            {this.props.players.slice(-1)[0].isKilled
-                                ? <p className="text-danger">
-                                        {this.props.players.slice(-1)[0].name}
-                                    </p>
-                                : <p className="text-success">
-                                    {this.props.players.slice(-1)[0].name}
-                                </p>
-                            }
-                        </div>
-                        <div className="badge">
-                            {this.props.players.slice(-1)[0].kills} kills
-                        </div>
-                    </div>
-                </div>
-            }
+                {printWithLine(this.props.players)}
             </div>
-            </div>
-        );
+        )
     }
 }
+
+
+//just a nice little function here
+function printWithLine(scores) {
+    let result = [];
+        for (let i = 0; i < scores.length-1; i++) {
+            let score = scores[i];
+        result.push(<Score key={score.id} data={{name : score.name, kills : score.kills, isKilled : score.isKilled, line : true}} />);
+        }
+        let score = scores[scores.length-1];
+        result.push(<Score key={score.id} data={{name : score.name, kills : score.kills,  isKilled : score.isKilled, line : false}} />);
+        return result;
+}
+//Score component with conditional line rendering
+const Score = (props) => {
+    let data = props.data;
+    let l = data.line ? <hr/> : <div></div> ;
+    return (
+        <div className="container-fluid">
+        <div className="row">
+            <div className="col-lg-7 col-xs-7">
+                {data.isKilled
+                    ? <p className="text-danger">
+                            {data.name}
+                        </p>
+                    : <p className="text-success">
+                        {data.name}
+                    </p>
+                }
+            </div>
+            <div className="badge">
+                {data.kills} kills
+            </div>
+            {l}
+        </div>
+    </div>
+    );
+}
+
 
 function mapStateToProps(state) {
     return {players: state.players}

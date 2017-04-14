@@ -32,7 +32,7 @@ const userSchema = new Schema({
         type : String,
         required : true
     },
-    victimId : {
+    victimCode : {
         type : String
     },
     victimName : {
@@ -41,17 +41,18 @@ const userSchema = new Schema({
     }
 });
 
-userSchema.statics.getUserSafe = async (data,err) => {
+userSchema.statics.getUserSafe = async (id,err) => {
     if (err) return err;
-    let user = await User.findById(data);
+    let user = await User.findById(id);
     if (!user) return;
     else return {
         name : user.name,
         kills : user.kills,
         isKilled : user.isKilled,
         email : user.email,
-        victimId : 'victim',
-        victimName : 'victimName'
+        victimName : user.victimName,
+        code : user.code,
+        id : user._id
     }
 }
 
