@@ -2,6 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, IndexLink, browserHistory} from 'react-router';
 import {logout} from '../../actions/authActions';
+import {bindActionCreators} from 'redux';
+import * as actions from '../../actions/personal'
+import {assign} from 'lodash';
 
 class Guest extends React.Component {
     render() {
@@ -33,7 +36,7 @@ class PlayerData extends React.Component {
 
     logout(e) {
         e.preventDefault();
-        this.props.logout();
+        this.props.actions.logout();
         browserHistory.push('/');
     }
 
@@ -44,9 +47,13 @@ class PlayerData extends React.Component {
 
 
     //add suicide functionality here
-    suicide(e) {
+    gotKilled(e) {
         e.preventDefault();
         browserHistory.push('/');
+    }
+
+    componentWillMount() {
+        this.props.actions.getPersonalData();
     }
 
     render() {
@@ -55,6 +62,7 @@ class PlayerData extends React.Component {
             I will change it whenever I get better knowledge of Javascript, this works good so far though
             */
         }
+        console.log(this.props);
 
         const Player = () => {
 
@@ -63,8 +71,8 @@ class PlayerData extends React.Component {
                     <div className="panel panel-default panel-body container-fluid">
                         <div className="row">
                             <div className="col-lg-12">
-                                <h3>{this.props.auth.user.name}
-                                    <small className="badge">{this.props.auth.user.kills}
+                                <h3>{this.props.personal.name}
+                                    <small className="badge">{this.props.personal.user.kills}
                                         kills</small>
                                 </h3>
                                 <hr/>
@@ -84,8 +92,8 @@ class PlayerData extends React.Component {
                     <div className="panel panel-default panel-body container-fluid">
                         <div className="row">
                             <div className="col-lg-12">
-                                <h3>{this.props.auth.user.name}
-                                    <small className="badge">{this.props.auth.user.kills} kills</small>
+                                <h3>{this.props.personal.name}
+                                    <small className="badge">{this.props.personal.kills} kills</small>
                                 </h3>
                                 <hr/>
                             </div>
@@ -95,7 +103,7 @@ class PlayerData extends React.Component {
                                         Your Code
                                     </small>
                                     <div id="hover-content">
-                                        {this.props.auth.user.code}
+                                        {this.props.personal.code}
                                     </div>
                                 </div>
                                 <div id="hover-me" className="well well-sm hidden-xs">
@@ -103,7 +111,7 @@ class PlayerData extends React.Component {
                                         Your Victim
                                     </small>
                                     <div id="hover-content">
-                                        {this.props.auth.user.victim}
+                                        {this.props.personal.victimName}
                                     </div>
                                 </div>
 
@@ -114,7 +122,7 @@ class PlayerData extends React.Component {
                                         Your Code :
                                     </small>
                                     <div>
-                                        {this.props.auth.user.code}
+                                        {this.props.personal.code}
                                     </div>
                                 </div>
                                 <div className="well well-sm hidden-lg hidden-sm hidden-md">
@@ -122,7 +130,7 @@ class PlayerData extends React.Component {
                                         Your Victim :
                                     </small>
                                     <div>
-                                        {this.props.auth.user.victim}
+                                        {this.props.personal.victimName}
                                     </div>
                                 </div>
 
@@ -132,24 +140,31 @@ class PlayerData extends React.Component {
                                     </Link>
                                     <button className="btn btn-default" onClick={this.logout.bind(this)}>Log Out</button>
                                 </div>
-                                <div className="col-lg-12">
+                                {/*<div className="col-lg-12">
                                     <hr/>
-                                    <button className="btn btn-default btn-block" onClick={this.suicide.bind(this)}>Suicide</button>
-                                </div>
+                                    <div id="hover-me">
+                                        <button className="btn btn-info btn-block" onClick={this.gotKilled.bind(this)}>I got killed :(</button>
+                                            <div id="hover-content" style={{"fontSize":"75%"}}>
+                                                <hr />
+                                                <div className=""> Pressing this button will finish your game and give 1 point to your assigned killer.</div>
+                                            </div>
+                                    </div>
+                                </div>*/}
                             </div>
                         </div>
                     </div>
                 );
             }
-            return (this.props.auth.user.isKilled
+            return (this.props.personal.isKilled
                 ? <Dead/>
                 : <Alive/>);
         }
         const {isAuthenticated} = this.props.auth;
         //MAIN RENDER FUNCTION GOES HERE
-        //CONIDITIONAL RENDERING
+        //CONDITIONAL RENDERING
         return (
             <div>
+
                 {isAuthenticated
                     ? <Player/>
                     : <Guest/>
@@ -161,8 +176,15 @@ class PlayerData extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {auth: state.auth};
+    return {auth: state.auth,
+            personal : state.personal}
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(assign({}, {logout}, actions), dispatch)
+    }
 }
 
 //connect to state
-export default connect(mapStateToProps, {logout})(PlayerData);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerData);

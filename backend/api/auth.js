@@ -16,7 +16,7 @@ const token = (user) => {
             name : user.name,
             kills : user.kills,
             isKilled : user.isKilled,
-            victim : 'VICTIM',
+            victimName : user.victimName,
             code : user.code
         }, supersecret.jwtSecret);
         return tok;

@@ -39,11 +39,11 @@ class SignupForm extends React.Component {
         this.setState({errors : {}, isLoading : true });
         this.props.userSignupRequest(this.state).then(
             () => {
+                browserHistory.push('/');
                 this.props.addFlashMessage({
                     type : 'success',
                     text : 'Registration is successful! Get ready for Hunting!'
                 });
-                browserHistory.push('/');
             },
             (err) => this.setState({errors : err.response.data, isLoading : false})
         );

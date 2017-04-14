@@ -20,11 +20,12 @@ const userBuilder = (body) => {
         email : body.email,
         password : body.password,
         passwordConfirmation : body.passwordConfirmation,
+        victimCode : "to be assigned",
+        victimName : "to be assigned",
         isKilled : false,
         kills : 0,
-        code : shortid.generate()
+        code : shortid.generate().slice(3)
     });
-    console.log(user);
     return user;
 }
 
@@ -78,10 +79,23 @@ const validateInput = async (req) => {
     return {errors, isValid: _.isEmpty(errors)}
 }
 
+
+module.exports.personal = async(req,res) => {
+    let response;
+    try {
+        response = await User.getUserSafe(req.currentUser.id);
+    } catch (ex) {
+        res.status(500).json({error : "internal server error"});
+    }
+    res.status(200).json(response);
+}
+
+
+//get all users
 module.exports.users = async(req, res) => {
     let response;
     try {
-        response = await User.find({})
+        response = await User.find({});
     } catch (ex) {
         console.error(ex);
         res.send(ex);
@@ -93,13 +107,17 @@ module.exports.users = async(req, res) => {
             name : user.name,
             kills : user.kills,
             id : user._id,
-            isKilled : user.isKilled
+            isKilled : user.isKilled,
+            victimCode :user.victimCode,
+            victimName : user.victimName,
+            code : user.code
         }
     })
 
     res.send(response);
 };
 
+//delete all users
 module.exports.delete = async(req, res) => {
     let response;
     try {

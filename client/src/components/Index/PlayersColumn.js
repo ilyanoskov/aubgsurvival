@@ -1,7 +1,6 @@
 import React from 'react';
 import Stats from './Stats';
 import PlayerData from './PlayerData';
-import {browserHistory} from 'react-router';
 
 class PlayersColumn extends React.Component {
 

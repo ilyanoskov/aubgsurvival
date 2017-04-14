@@ -1,4 +1,3 @@
-import isEmpty from 'lodash/isEmpty';
 import axios from 'axios';
 import {REQUEST_ALIVE_PLAYERS, RECEIVE_ALIVE_PLAYERS} from '../actions/types';
 
@@ -15,7 +14,7 @@ export function receiveAlivePlayers(players) {
 export function getPlayers(players) {
     return function(dispatch) {
         dispatch(requestAlivePlayers(players));
-        return axios.get('http://10.253.95.1:3001/api/users').then(
+        return axios.get('http://localhost:3001/api/users').then(
             res => dispatch(receiveAlivePlayers(res.data)))
     }
 };

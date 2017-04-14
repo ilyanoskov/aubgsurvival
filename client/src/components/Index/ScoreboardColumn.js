@@ -1,7 +1,6 @@
 import React from 'react';
 import Scores from './Scores'
 import {browserHistory} from 'react-router';
-
 class ScoreboardColumn extends React.Component {
     handleClick(e) {
         e.preventDefault();
@@ -21,13 +20,16 @@ class ScoreboardColumn extends React.Component {
                         {/*ALL PLAYERS STUFF GOES HERE*/}
                         <Scores/>
                     </div>
-                    <div className="panel-footer" onClick={this.handleClick}>
-                        <div className="text-center">
-                            <small>
-                                show more
-                            </small>
+                    {/*
+                        <div className="panel-footer" onClick={this.handleClick}>
+                            <div className="text-center">
+                                <small>
+                                    show more
+                                </small>
+                            </div>
                         </div>
-                    </div>
+                        */}
+
 
                 </div>
             </div>
