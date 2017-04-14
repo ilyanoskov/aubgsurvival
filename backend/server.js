@@ -3,7 +3,6 @@ const Promise = require('bluebird');
 const bodyParser = require('body-parser');
 const app = express();
 const users = require('./users');
-const monk = require('monk');
 const corser = require('corser');
 const auth = require('./auth');
 const kill = require('./kill');
@@ -13,7 +12,7 @@ const events = require('./events');
 const victims = require('./victims');
 
 const mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://localhost/aubgsurvival');
+const db = mongoose.connect('mongodb://database/aubgsurvival');
 
 //wrap DB inside req for easy database retrieval
 app.use((req, res, next) => {
