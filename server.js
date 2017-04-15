@@ -36,10 +36,23 @@ app.post('/api', (req, res) => {
     supportsCredentials : true,
     requestHeaders: corser.simpleRequestHeaders.concat(["Authorization"])
 }));
+
 */
 
-let options =  { credentials:true };
-app.use(cors(options));
+let originsWhitelist = [
+  'http://localhost:3000',      //this is my front-end url for development
+   'https://ilyanoskov.github.io/aubgsurvival-frontend/#/'
+];
+
+let corsOptions = {
+  origin: function(origin, callback){
+        let isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+        callback(null, isWhitelisted);
+  },
+  credentials:true
+}
+
+app.use(cors(corsOptions));
 app.options('/api/users/personal', cors());
 app.options('/api/users/register', cors());
 app.options('/api/auth', cors());
