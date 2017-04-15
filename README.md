@@ -1,7 +1,7 @@
 # AUBG Survival Game
 
 This is a repository for AUBG Survival Game. This project aims to completely rewrite the web application using modern full stack technologies.
-In the future I plan to write React Native applications using this codebase.
+In the future I plan to write React Native applications using this codebase. The backend is hosted on Heroku.
 
 # Technology Stack
 
