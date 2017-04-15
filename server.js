@@ -3,7 +3,6 @@ const Promise = require('bluebird');
 const bodyParser = require('body-parser');
 const app = express();
 const users = require('./users');
-const corser = require('corser');
 const auth = require('./auth');
 const kill = require('./kill');
 const authenticate = require('./middleware/authenticate.js').auth;
@@ -12,7 +11,7 @@ const events = require('./events');
 const victims = require('./victims');
 
 const mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://database/aubgsurvival');
+const db = mongoose.connect('mongodb://heroku_lzw4c7z3:i04da3o2rood9kk7snh7174790@ds157809.mlab.com:57809/heroku_lzw4c7z3');
 
 //wrap DB inside req for easy database retrieval
 app.use((req, res, next) => {
@@ -21,11 +20,6 @@ app.use((req, res, next) => {
 });
 
 
-//allows for cross-domain requests AND authorization headers
-app.use(corser.create({
-    supportsCredentials : true,
-    requestHeaders: corser.simpleRequestHeaders.concat(["Authorization"])
-}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -64,4 +58,4 @@ app.post('/api/assign', victims.initialAssign);
 app.post('/api/kill', authenticate, kill.kill);
 
 
-app.listen(3001, console.log('Listening on the port 3001'));
+app.listen(PORT || 3001, console.log('Listening on the port ', PORT));
