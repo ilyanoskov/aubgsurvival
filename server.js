@@ -1,5 +1,6 @@
 const express = require('express');
 const Promise = require('bluebird');
+const corser = require('corser');
 const bodyParser = require('body-parser');
 const app = express();
 const users = require('./users');
@@ -29,6 +30,12 @@ app.post('/api', (req, res) => {
     console.log(req.body);
     res.send('OK');
 });
+
+//allows for cross-domain requests AND authorization headers
+app.use(corser.create({
+    supportsCredentials : true,
+    requestHeaders: corser.simpleRequestHeaders.concat(["Authorization"])
+}));
 
 //users API
 
