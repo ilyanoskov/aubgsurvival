@@ -37,7 +37,9 @@ app.post('/api', (req, res) => {
     requestHeaders: corser.simpleRequestHeaders.concat(["Authorization"])
 }));
 */
-app.use(cors());
+
+let options =  { credentials:true };
+app.use(cors(options));
 app.options('/api/users/personal', cors());
 app.options('/api/users/register', cors());
 app.options('/api/auth', cors());
@@ -53,7 +55,6 @@ app.get('/api/users/personal', authenticate, users.personal);
 
 //Auth
 app.post('/api/auth', auth.auth);
-
 
 //events api
 app.get('/api/events', events.get);
