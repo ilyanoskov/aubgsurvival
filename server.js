@@ -38,10 +38,12 @@ app.post('/api', (req, res) => {
 }));
 */
 app.use(cors());
-app.options('*', cors());
 app.options('/api/users/personal', cors());
 app.options('/api/users/register', cors());
 app.options('/api/auth', cors());
+app.options('/api/events', cors());
+app.options('/api/assign', victims.initialAssign);
+app.options('/api/kill', authenticate, kill.kill);
 //users API
 
 app.get('/api/users', users.users);
