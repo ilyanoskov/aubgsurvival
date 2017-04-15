@@ -44,28 +44,24 @@ let originsWhitelist = [
    'https://ilyanoskov.github.io/aubgsurvival-frontend/#/'
 ];
 
-let corsOptions = {
-  origin: true,
-  credentials:true
-}
 
 app.use(cors());
 
-app.get('/api/users',cors(corsOptions), users.users);
-app.post('/api/users/register',cors(corsOptions), users.register);
+app.get('/api/users',cors(), users.users);
+app.post('/api/users/register',cors(), users.register);
 app.delete('/api/users', users.delete); //DEV ONLY!
-app.get('/api/users/personal', cors(corsOptions), authenticate, users.personal);
+app.get('/api/users/personal', cors(), authenticate, users.personal);
 
 //Auth
-app.post('/api/auth', cors(corsOptions),auth.auth);
+app.post('/api/auth', cors(),auth.auth);
 
 //events api
-app.get('/api/events', cors(corsOptions),events.get);
+app.get('/api/events', cors(),events.get);
 app.delete('/api/events', events.erase);
 
 //gameplay
 app.post('/api/assign', victims.initialAssign);
-app.post('/api/kill', cors(corsOptions),authenticate, kill.kill);
+app.post('/api/kill', cors(),authenticate, kill.kill);
 
 app.set('port', (process.env.PORT || 5000));
 
