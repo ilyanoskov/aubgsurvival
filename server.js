@@ -13,14 +13,6 @@ const victims = require('./victims');
 const mongoose = require('mongoose');
 const db = mongoose.connect('mongodb://heroku_lzw4c7z3:i04da3o2rood9kk7snh7174790@ds157809.mlab.com:57809/heroku_lzw4c7z3');
 
-//wrap DB inside req for easy database retrieval
-app.use((req, res, next) => {
-    req.db = db;
-    next();
-});
-
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -57,5 +49,6 @@ app.delete('/api/events', events.erase);
 app.post('/api/assign', victims.initialAssign);
 app.post('/api/kill', authenticate, kill.kill);
 
+app.set('port', (process.env.PORT || 5000));
 
-app.listen(PORT || 3001, console.log('Listening on the port ', PORT));
+app.listen(app.get('port'), console.log('Listening on the port ', app.get('port')));
