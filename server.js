@@ -39,6 +39,9 @@ app.post('/api', (req, res) => {
 */
 app.use(cors());
 app.options('*', cors());
+app.options('/api/users/personal', cors());
+app.options('/api/users/register', cors());
+app.options('/api/auth', cors());
 //users API
 
 app.get('/api/users', users.users);
