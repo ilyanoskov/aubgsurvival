@@ -45,7 +45,7 @@ let originsWhitelist = [
 ];
 
 
-app.use(cors({credentials: true}));
+app.use(cors({credentials: true, origin : 'https://ilyanoskov.github.io'}));
 
 app.get('/api/users', users.users);
 app.post('/api/users/register', users.register);
