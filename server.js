@@ -52,7 +52,6 @@ let corsOptions = {
   credentials:true
 }
 
-app.use(cors(corsOptions));
 app.options('/api/users/personal', cors());
 app.options('/api/users/register', cors());
 app.options('/api/auth', cors());
@@ -61,21 +60,21 @@ app.options('/api/assign', victims.initialAssign);
 app.options('/api/kill', authenticate, kill.kill);
 //users API
 
-app.get('/api/users', users.users);
-app.post('/api/users/register', users.register);
+app.get('/api/users',cors(corsOptions), users.users);
+app.post('/api/users/register',cors(corsOptions), users.register);
 app.delete('/api/users', users.delete); //DEV ONLY!
-app.get('/api/users/personal', authenticate, users.personal);
+app.get('/api/users/personal', cors(corsOptions),authenticate, users.personal);
 
 //Auth
-app.post('/api/auth', auth.auth);
+app.post('/api/auth', cors(corsOptions),auth.auth);
 
 //events api
-app.get('/api/events', events.get);
+app.get('/api/events', cors(corsOptions),events.get);
 app.delete('/api/events', events.erase);
 
 //gameplay
 app.post('/api/assign', victims.initialAssign);
-app.post('/api/kill', authenticate, kill.kill);
+app.post('/api/kill', cors(corsOptions),authenticate, kill.kill);
 
 app.set('port', (process.env.PORT || 5000));
 
