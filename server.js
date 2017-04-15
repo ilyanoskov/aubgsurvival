@@ -49,6 +49,7 @@ let corsOptions = {
   credentials:true
 }
 
+app.use(cors());
 
 app.get('/api/users',cors(corsOptions), users.users);
 app.post('/api/users/register',cors(corsOptions), users.register);
