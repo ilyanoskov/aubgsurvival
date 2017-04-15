@@ -45,23 +45,23 @@ let originsWhitelist = [
 ];
 
 
-app.use(cors());
+app.use(cors({credentials: true}));
 
-app.get('/api/users',cors(), users.users);
-app.post('/api/users/register',cors(), users.register);
+app.get('/api/users', users.users);
+app.post('/api/users/register', users.register);
 app.delete('/api/users', users.delete); //DEV ONLY!
-app.get('/api/users/personal', cors(), authenticate, users.personal);
+app.get('/api/users/personal',  authenticate, users.personal);
 
 //Auth
-app.post('/api/auth', cors(),auth.auth);
+app.post('/api/auth',auth.auth);
 
 //events api
-app.get('/api/events', cors(),events.get);
+app.get('/api/events',events.get);
 app.delete('/api/events', events.erase);
 
 //gameplay
 app.post('/api/assign', victims.initialAssign);
-app.post('/api/kill', cors(),authenticate, kill.kill);
+app.post('/api/kill',authenticate, kill.kill);
 
 app.set('port', (process.env.PORT || 5000));
 
