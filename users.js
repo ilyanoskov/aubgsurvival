@@ -60,9 +60,9 @@ const validateInput = async (req) => {
         errors.email = 'Email is invalid';
     }
     //Check if it's an AUBG e-mail
-if (!data.email.substring(6,13) === "@aubg.edu") {
+    if (!data.email.substring(6) === "@aubg.edu") {
     errors.email = 'Must be an aubg email'
-}
+    }
     
     //Check if password was supplied
     if (Validator.isEmpty(data.password
