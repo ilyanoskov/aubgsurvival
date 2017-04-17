@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
- "engines": {
+  "engines": {
     "node": "7.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm install && node server.js",
-    "deploy": "gh-pages -d . -b prod"
+    "start-dev": "npm install && nodemon server.js",
+    "deploy": "rm -rf node_modules && gh-pages -d . -b prod"
   },
   "repository": {
     "type": "git",
@@ -22,16 +23,20 @@
   },
   "homepage": "https://github.com/ilyanoskov/aubgsurvival#readme",
   "dependencies": {
-    "bcrypt": "1.0.2",
+    "bcrypt": "latest",
     "bluebird": "^3.4.7",
     "body-parser": "^1.17.0",
     "cors": "^2.8.3",
     "corser": "^2.0.1",
+    "dotenv": "^4.0.0",
     "express": "^4.14.1",
     "jsonwebtoken": "^7.3.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.9.3",
     "shortid": "^2.2.8",
     "validator": "^7.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.12.0"
   }
 }
