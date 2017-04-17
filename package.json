@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm install && node server.js",
     "start-dev": "npm install && nodemon server.js",
-    "deploy": "rm -rf node_modules && gh-pages -d . -b prod"
+    "deploy": "gh-pages -d . -b prod"
   },
   "repository": {
     "type": "git",
