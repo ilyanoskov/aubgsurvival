@@ -1,9 +1,9 @@
 const express = require('express');
 const Promise = require('bluebird');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const users = require('./users');
-const corser = require('corser');
 const auth = require('./auth');
 const kill = require('./kill');
 const authenticate = require('./middleware/authenticate.js').auth;
@@ -12,20 +12,7 @@ const events = require('./events');
 const victims = require('./victims');
 
 const mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://database/aubgsurvival');
-
-//wrap DB inside req for easy database retrieval
-app.use((req, res, next) => {
-    req.db = db;
-    next();
-});
-
-
-//allows for cross-domain requests AND authorization headers
-app.use(corser.create({
-    supportsCredentials : true,
-    requestHeaders: corser.simpleRequestHeaders.concat(["Authorization"])
-}));
+const db = mongoose.connect('mongodb://heroku_lzw4c7z3:i04da3o2rood9kk7snh7174790@ds157809.mlab.com:57809/heroku_lzw4c7z3');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -44,24 +31,37 @@ app.post('/api', (req, res) => {
     res.send('OK');
 });
 
-//users API
+//allows for cross-domain requests AND authorization headers
+/*app.use(corser.create({
+    supportsCredentials : true,
+    requestHeaders: corser.simpleRequestHeaders.concat(["Authorization"])
+}));
+*/
+
+let originsWhitelist = [
+  'http://localhost:3000',      //this is my front-end url for development
+   'https://ilyanoskov.github.io/aubgsurvival'
+];
+
+
+app.use(cors({credentials: true, origin : 'https://ilyanoskov.github.io/aubgsurvival'}));
 
 app.get('/api/users', users.users);
 app.post('/api/users/register', users.register);
 app.delete('/api/users', users.delete); //DEV ONLY!
-app.get('/api/users/personal', authenticate, users.personal);
+app.get('/api/users/personal',  authenticate, users.personal);
 
 //Auth
-app.post('/api/auth', auth.auth);
-
+app.post('/api/auth',auth.auth);
 
 //events api
-app.get('/api/events', events.get);
+app.get('/api/events',events.get);
 app.delete('/api/events', events.erase);
 
 //gameplay
 app.post('/api/assign', victims.initialAssign);
-app.post('/api/kill', authenticate, kill.kill);
+app.post('/api/kill',authenticate, kill.kill);
 
+app.set('port', (process.env.PORT || 5000));
 
-app.listen(3001, console.log('Listening on the port 3001'));
+app.listen(app.get('port'), console.log('Listening on the port ', app.get('port')));
