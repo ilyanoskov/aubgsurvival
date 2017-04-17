@@ -65,14 +65,13 @@ class PlayerData extends React.Component {
         console.log(this.props);
 
         const Player = () => {
-
             const Dead = () => {
                 return (
                     <div className="panel panel-default panel-body container-fluid">
                         <div className="row">
                             <div className="col-lg-12">
                                 <h3>{this.props.personal.name}
-                                    <small className="badge">{this.props.personal.user.kills}
+                                    <small className="badge">{this.props.personal.kills}
                                         kills</small>
                                 </h3>
                                 <hr/>
@@ -80,6 +79,10 @@ class PlayerData extends React.Component {
                             <div className="col-lg-12">
                                 <h2>You are dead :(
                                 </h2>
+                                <hr />
+                            </div>
+                            <div className="col-lg-12 text-center">
+                                <button className="btn btn-default" onClick={this.logout.bind(this)}>Log Out</button>
                             </div>
                         </div>
                     </div>
@@ -164,7 +167,6 @@ class PlayerData extends React.Component {
         //CONDITIONAL RENDERING
         return (
             <div>
-
                 {isAuthenticated
                     ? <Player/>
                     : <Guest/>

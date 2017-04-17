@@ -4,9 +4,12 @@ class Stats extends React.Component {
     render() {
         return (
             <div>
+            {/*
             <div className="panel panel-default panel-body container-fluid">
                 <div className="text-center">
-                        <h3>Statistics</h3>
+
+
+                 <h3>Statistics</h3>
                         <hr />
                         <h5 > 1 DIED YESTERDAY </h5>
                         <h5> 2 DIED TODAY </h5>
@@ -17,6 +20,7 @@ class Stats extends React.Component {
                 </div>
             </div>
             </div>
+            */}
         )
     }
 
