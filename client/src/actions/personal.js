@@ -12,7 +12,7 @@ export function receive_personal(data) {
 export function getPersonalData(data) {
     return function(dispatch) {
         dispatch(request_personal(data));
-        return axios.get('https://aubgsurvival2.herokuapp.com/api/users/personal').then(
+        return axios.get(`${process.env.REACT_APP_SERVER}/api/users/personal`).then(
             res => dispatch(receive_personal(res.data)))
     }
 };

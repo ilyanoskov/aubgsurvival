@@ -20,7 +20,7 @@ export function logout() {
 
 export function login(data) {
     return dispatch => {
-        return axios.post('https://aubgsurvival2.herokuapp.com/api/auth', data).then(res => {
+        return axios.post(`${process.env.REACT_APP_SERVER}/api/auth`, data).then(res => {
             const token = res.data.token;
             localStorage.setItem('jwtToken', token);
             setAuthorizationToken(token);

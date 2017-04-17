@@ -14,7 +14,7 @@ export function receiveAlivePlayers(players) {
 export function getPlayers(players) {
     return function(dispatch) {
         dispatch(requestAlivePlayers(players));
-        return axios.get('https://aubgsurvival2.herokuapp.com/api/users').then(
+        return axios.get(`${process.env.REACT_APP_SERVER}/api/users`).then(
             res => dispatch(receiveAlivePlayers(res.data)))
     }
 };

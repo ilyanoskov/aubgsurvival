@@ -12,7 +12,7 @@ export function receive(events) {
 export function getEvents(events) {
     return function(dispatch) {
         dispatch(request(events));
-        return axios.get('https://aubgsurvival2.herokuapp.com/api/events').then(
+        return axios.get(`${process.env.REACT_APP_SERVER}/api/events`).then(
             res => dispatch(receive(res.data)))
     }
 };

@@ -30,7 +30,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "start:server": "http-server -p 3000 ./build",
-    "predeploy": "npm run build",
+    "predeploy": "REACT_APP_SERVER=https://aubgsurvival2.herokuapp.com npm run build",
     "deploy": "gh-pages -d build"
   },
   "homepage": "https://ilyanoskov.github.io/aubgsurvival"
