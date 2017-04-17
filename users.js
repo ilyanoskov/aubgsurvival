@@ -16,20 +16,20 @@ const userExists = async(db, email) => {
 //builds a new user profile
 const userBuilder = (body) => {
     let user = new User({
-        name : body.name,
-        email : body.email,
-        password : body.password,
-        passwordConfirmation : body.passwordConfirmation,
-        victimCode : "to be assigned",
-        victimName : "to be assigned",
-        isKilled : false,
-        kills : 0,
-        code : shortid.generate().slice(3)
+        name: body.name,
+        email: body.email,
+        password: body.password,
+        passwordConfirmation: body.passwordConfirmation,
+        victimCode: "to be assigned",
+        victimName: "to be assigned",
+        isKilled: false,
+        kills: 0,
+        code: shortid.generate().slice(3)
     });
     return user;
 }
 
-const validateInput = async (req) => {
+const validateInput = async(req) => {
     let db = req.db;
     let data = req.body;
     let errors = {};
@@ -38,15 +38,14 @@ const validateInput = async (req) => {
         ? data.name
         : '')) {
         //Check if a user exists with such a name
-        errors.name =
-        'This field is required';
+        errors.name = 'This field is required';
     } else {
         let userExist = await userExists(db, data.email);
         if (userExist) {
             console.log('user exists');
-        errors.name = 'User exists';
+            errors.name = 'User exists';
+        }
     }
-}
     //Check if email was supplied
     if (Validator.isEmpty(data.email
         ? data.email
@@ -79,17 +78,15 @@ const validateInput = async (req) => {
     return {errors, isValid: _.isEmpty(errors)}
 }
 
-
-module.exports.personal = async(req,res) => {
+module.exports.personal = async(req, res) => {
     let response;
     try {
         response = await User.getUserSafe(req.currentUser.id);
     } catch (ex) {
-        res.status(500).json({error : "internal server error"});
+        res.status(500).json({error: "internal server error"});
     }
     res.status(200).json(response);
 }
-
 
 //get all users
 module.exports.users = async(req, res) => {
@@ -104,13 +101,13 @@ module.exports.users = async(req, res) => {
     //strip away all sensitive data, leave out only kills and name
     response = response.map(user => {
         return {
-            name : user.name,
-            kills : user.kills,
-            id : user._id,
-            isKilled : user.isKilled,
-            victimCode :user.victimCode,
-            victimName : user.victimName,
-            code : user.code
+            name: user.name,
+            kills: user.kills,
+            id: user._id,
+            isKilled: user.isKilled,
+            victimCode: user.victimCode,
+            victimName: user.victimName,
+            code: user.code
         }
     })
 
@@ -119,14 +116,18 @@ module.exports.users = async(req, res) => {
 
 //delete all users
 module.exports.delete = async(req, res) => {
-    let response;
-    try {
-        response = await User.remove({});
-    } catch (ex) {
-        console.error(ex);
-        res.send(ex);
+    if (req.body.secret = process.env.APP_SECRET) {
+        let response;
+        try {
+            response = await User.remove({});
+        } catch (ex) {
+            console.error(ex);
+            res.send(ex);
+        }
+        res.status(200).send(response);
+    } else {
+        res.status(404).send('wrong secret/ access denied');
     }
-    res.send(response);
 }
 
 // Register a new user
@@ -148,7 +149,10 @@ module.exports.register = async(req, res) => {
         let db = req.db;
         //user creation logic
         try {
-            let response = await (userBuilder(req.body).save(err => {if (err) throw err}));
+            let response = await(userBuilder(req.body).save(err => {
+                if (err)
+                    throw err
+            }));
             console.log('User created');
             console.log(response);
             res.status(200).send('User created succesfully');
