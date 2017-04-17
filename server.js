@@ -40,11 +40,11 @@ app.post('/api', (req, res) => {
 
 let originsWhitelist = [
   'http://localhost:3000',      //this is my front-end url for development
-   'https://ilyanoskov.github.io/aubgsurvival-frontend/#/'
+   'https://ilyanoskov.github.io/aubgsurvival'
 ];
 
 
-app.use(cors({credentials: true, origin : 'https://ilyanoskov.github.io'}));
+app.use(cors({credentials: true, origin : 'https://ilyanoskov.github.io/aubgsurvival'}));
 
 app.get('/api/users', users.users);
 app.post('/api/users/register', users.register);
