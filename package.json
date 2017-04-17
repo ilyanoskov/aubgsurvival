@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/ilyanoskov/aubgsurvival#readme",
   "dependencies": {
-    "bcrypt": "1.0.2",
+    "bcrypt": "latest",
     "bluebird": "^3.4.7",
     "body-parser": "^1.17.0",
     "cors": "^2.8.3",
