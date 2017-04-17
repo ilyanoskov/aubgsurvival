@@ -2,14 +2,13 @@
 
 This is a repository for AUBG Survival Game. This project aims to completely rewrite the web application using modern full stack technologies.
 In the future I plan to write React Native applications using this codebase.
+The client is hosted on Github Pages, using gh-pages branch. The server is hosted on Heroku.
 
 # Technology Stack
 
 ### NodeJS + Express.js 
 ### React + Redux
 ### MongoDB
-
-Featuring Docker, Mocha to make things a bit smoother
 
 # Installation
 ```git clone https://github.com/ilyanoskov/aubgsurvival ```
@@ -18,8 +17,17 @@ Featuring Docker, Mocha to make things a bit smoother
 
 ```npm install```
 
-```npm start```
+```cd aubgsurvival/backend ```
 
-The front end app will be running on localhost:3000
+```npm install```
+
+# Development
+Run ```nodemon backend/server.js```
+and then do ```npm start``` in client
+
+# Deployment 
+
+just do ```npm run deploy``` in both client and backend folders
+
 
 
