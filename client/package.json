@@ -33,5 +33,5 @@
     "predeploy": "REACT_APP_SERVER=https://aubgsurvival2.herokuapp.com npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://ilyanoskov.github.io/aubgsurvival"
+  "homepage": "aubgsurvival.fun"
 }
