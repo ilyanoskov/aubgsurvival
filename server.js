@@ -38,13 +38,23 @@ app.post('/api', (req, res) => {
 }));
 */
 
-let originsWhitelist = [
+let whitelist = [
   'http://localhost:3000',      //this is my front-end url for development
    'https://ilyanoskov.github.io/aubgsurvival'
 ];
 
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+    credentials : true
+}
 
-app.use(cors({credentials: true, origin : 'https://ilyanoskov.github.io'}));
+app.use(cors(corsOptions));
 
 app.get('/api/users', users.users);
 app.post('/api/users/register', users.register);

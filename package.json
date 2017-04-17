@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
- "engines": {
+  "engines": {
     "node": "7.x"
   },
   "scripts": {
@@ -33,5 +33,8 @@
     "mongoose": "^4.9.3",
     "shortid": "^2.2.8",
     "validator": "^7.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.12.0"
   }
 }
