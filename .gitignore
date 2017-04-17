@@ -3,3 +3,4 @@ db/
 npm-debug.log
 build/
 .env
+npm-debug*

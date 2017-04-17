@@ -16,10 +16,12 @@ Kill functionality :
 */
 
 const kill = async(req, res) => {
-    //get the victimId from request
+    //check if the user sending the request is alive
+    let user = await User.findOne(req.currentUser);
+    if (user.isKilled === false) {
+    //get the victimCode from request
     let victimCode = req.body.code;
     //get the name of the victim to be killed
-    let usersVictimName = req.currentUser.victimName;
 
     //find the potential victim by code
     let victim = await User.findOne({code: victimCode});
@@ -29,7 +31,7 @@ const kill = async(req, res) => {
         res.status(404).json({error: "no user found"});
     } else {
         //if it's found , compare two names and two codes
-        if (usersVictimName == victim.name && victimCode == victim.code) {
+        if (victimCode == victim.code) {
             //time to kill!!!
             try {
                 reassign(req.currentUser.code).then(newEvent(req.currentUser.name, usersVictimName));
@@ -41,6 +43,9 @@ const kill = async(req, res) => {
             res.status(200).json({message: "killing is succesful"});
         }
     }
+} else {
+    res.status(400).json({error : "you are dead you can't kill, sorreh"});
+}
 }
 
 const reassign = async(code) => {
