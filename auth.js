@@ -2,11 +2,6 @@ const Validator = require('validator');
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const supersecret = require('./supersecret');
-
-// if (bcrypt.compareSync(password, user.get('password_digest'))) {
-//
-// } else ERROR
 
 const User = require('./models/User');
 
@@ -18,7 +13,7 @@ const token = (user) => {
             isKilled : user.isKilled,
             victimName : user.victimName,
             code : user.code
-        }, supersecret.jwtSecret);
+        }, process.env.APP_SECRET);
         return tok;
 }
 

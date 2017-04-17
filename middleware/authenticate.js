@@ -4,7 +4,6 @@ Here we have a simple authentication middleware to authenticate the KILL
 */
 
 const User = require('../models/User.js')
-const supersecret = require('../supersecret.js');
 const jwt = require('jsonwebtoken');
 
 module.exports.auth = (req, res, next) => {
@@ -16,7 +15,7 @@ module.exports.auth = (req, res, next) => {
     }
 
     if (token) {
-        jwt.verify(token, supersecret.jwtSecret, (err, decoded) => {
+        jwt.verify(token, process.env.APP_SECRET, (err, decoded) => {
             if (err) {
                 res.status(401).json({error : "Failed to authenticate"});
             } else {
