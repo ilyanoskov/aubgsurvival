@@ -19,8 +19,8 @@ class Stats extends React.Component {
                         <h5>1 day left</h5>
                 </div>
             </div>
-            </div>
             */}
+            </div>
         )
     }
 
