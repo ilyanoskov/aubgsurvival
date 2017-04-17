@@ -17,7 +17,7 @@ Kill functionality :
 
 const kill = async(req, res) => {
     //check if the user sending the request is alive
-    let user = await User.findOne(req.currentUser);
+    let user = await User.findOne(req.currentUser.email);
     if (user.isKilled === false) {
     //get the victimCode from request
     let victimCode = req.body.code;
