@@ -36,7 +36,6 @@ app.post('/api', (req, res) => {
     supportsCredentials : true,
     requestHeaders: corser.simpleRequestHeaders.concat(["Authorization"])
 }));
-
 */
 
 let originsWhitelist = [
