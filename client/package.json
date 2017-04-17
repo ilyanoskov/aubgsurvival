@@ -8,7 +8,9 @@
     "redux-devtools": "^3.3.2"
   },
   "dependencies": {
+    "axios": "latest",
     "classnames": "^2.2.5",
+    "http-server": "latest",
     "jquery": "^3.1.1",
     "jwt-decode": "^2.1.0",
     "lodash": "^4.17.4",
@@ -20,9 +22,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "shortid": "^2.2.6 ",
-    "axios": "latest",
-    "validator": "latest",
-    "http-server": "latest"
+    "validator": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

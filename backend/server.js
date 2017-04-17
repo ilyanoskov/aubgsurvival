@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const Promise = require('bluebird');
 const cors = require('cors');
@@ -12,7 +13,7 @@ const events = require('./events');
 const victims = require('./victims');
 
 const mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://heroku_lzw4c7z3:i04da3o2rood9kk7snh7174790@ds157809.mlab.com:57809/heroku_lzw4c7z3');
+const db = mongoose.connect(process.env.MONGODB_URI);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -72,6 +73,6 @@ app.delete('/api/events', events.erase);
 app.post('/api/assign', victims.initialAssign);
 app.post('/api/kill',authenticate, kill.kill);
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 3001));
 
 app.listen(app.get('port'), console.log('Listening on the port ', app.get('port')));
