@@ -42,7 +42,8 @@ app.post('/api', (req, res) => {
 let whitelist = [
   'http://localhost:3000',      //this is my front-end url for development
    'https://ilyanoskov.github.io',
-   'http://aubgsurvival.fun/'
+   'http://aubgsurvival.fun',
+   'http://www.aubgsurvival.fun'
 ];
 
 var corsOptions = {
