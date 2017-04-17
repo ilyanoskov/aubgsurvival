@@ -116,7 +116,8 @@ module.exports.users = async(req, res) => {
 
 //delete all users
 module.exports.delete = async(req, res) => {
-    if (req.body.secret = process.env.APP_SECRET) {
+    console.log(process.env.APP_SECRET);
+    if (req.body.secret === process.env.APP_SECRET) {
         let response;
         try {
             response = await User.remove({});
