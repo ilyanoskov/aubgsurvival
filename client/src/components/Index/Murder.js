@@ -66,7 +66,6 @@ function printWithLine(events) {
             result.push( <Event key={event._id} data={{killer : event.killer, victim : event.victim, line: true}} />);
         }
         let event = events[events.length-1];
-        console.log(event);
         result.push(<Event key={event._id} data={{killer : event.killer, victim : event.victim, line: false}} />);
         return result;
 }

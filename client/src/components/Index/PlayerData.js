@@ -62,7 +62,6 @@ class PlayerData extends React.Component {
             I will change it whenever I get better knowledge of Javascript, this works good so far though
             */
         }
-        console.log(this.props);
 
         const Player = () => {
             const Dead = () => {
