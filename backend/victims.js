@@ -6,6 +6,8 @@ function randomIntFromInterval(min,max) {
 }
 
 const initialAssign = async (req, res) => {
+    if (req.body.secret === process.env.APP_SECRET) {
+
     let players = await User.find({});
     for (let i = 0; i < players.length-1; i++) {
         let victimIndex = randomIntFromInterval(i + 1, players.length - 1);
@@ -26,6 +28,11 @@ const initialAssign = async (req, res) => {
         message : "assignment finished"
         });
     }
+} else {
+    res.status(400).json({
+        error : "incorrect secret"
+    })
+}
 }
 
 

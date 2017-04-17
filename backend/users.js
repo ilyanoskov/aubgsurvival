@@ -105,9 +105,7 @@ module.exports.users = async(req, res) => {
             kills: user.kills,
             id: user._id,
             isKilled: user.isKilled,
-            victimCode: user.victimCode,
-            victimName: user.victimName,
-            code: user.code
+            email : user.email
         }
     })
 
@@ -116,7 +114,7 @@ module.exports.users = async(req, res) => {
 
 //delete all users
 module.exports.delete = async(req, res) => {
-    if (req.body.secret = process.env.APP_SECRET) {
+    if (req.body.secret === process.env.APP_SECRET) {
         let response;
         try {
             response = await User.remove({});
