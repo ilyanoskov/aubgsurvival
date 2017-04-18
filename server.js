@@ -32,12 +32,6 @@ app.post('/api', (req, res) => {
     res.send('OK');
 });
 
-//allows for cross-domain requests AND authorization headers
-/*app.use(corser.create({
-    supportsCredentials : true,
-    requestHeaders: corser.simpleRequestHeaders.concat(["Authorization"])
-}));
-*/
 
 let whitelist = [
   'http://localhost:3000',      //this is my front-end url for development
@@ -61,7 +55,7 @@ app.use(cors(corsOptions));
 
 app.get('/api/users', users.users);
 app.post('/api/users/register', users.register);
-app.delete('/api/users', users.delete); //DEV ONLY!
+app.delete('/api/users', users.delete);
 app.get('/api/users/personal',  authenticate, users.personal);
 
 //Auth
