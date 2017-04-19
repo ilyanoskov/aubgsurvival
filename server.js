@@ -32,7 +32,6 @@ app.post('/api', (req, res) => {
     res.send('OK');
 });
 
-
 let whitelist = [
   'http://localhost:3000',      //this is my front-end url for development
    'https://ilyanoskov.github.io',
@@ -56,6 +55,7 @@ app.use(cors(corsOptions));
 app.get('/api/users', users.users);
 app.post('/api/users/register', users.register);
 app.delete('/api/users', users.delete);
+app.delete('/api/user', users.deleteUser); //requires secret
 app.get('/api/users/personal',  authenticate, users.personal);
 
 //Auth
@@ -63,10 +63,10 @@ app.post('/api/auth',auth.auth);
 
 //events api
 app.get('/api/events',events.get);
-app.delete('/api/events', events.erase);
+app.delete('/api/events', events.erase); //requires secret
 
 //gameplay
-app.post('/api/assign', victims.initialAssign);
+app.post('/api/assign', victims.initialAssign); //requires secret
 app.post('/api/kill',authenticate, kill.kill);
 
 app.set('port', (process.env.PORT || 3001));
