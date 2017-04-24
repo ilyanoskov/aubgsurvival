@@ -105,10 +105,7 @@ module.exports.users = async(req, res) => {
             kills: user.kills,
             id: user._id,
             isKilled: user.isKilled,
-            email : user.email,
-            code : user.code,
-            password : user.password,
-            victimCode : user.victimCode
+            email : user.email
         }
     })
 
