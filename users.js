@@ -22,7 +22,7 @@ const userBuilder = (body) => {
         passwordConfirmation: body.passwordConfirmation,
         victimCode: "to be assigned",
         victimName: "to be assigned",
-        isKilled: true,
+        isKilled: false,
         kills: 0,
         code: shortid.generate().slice(3)
     });
@@ -106,7 +106,8 @@ module.exports.users = async(req, res) => {
             id: user._id,
             isKilled: user.isKilled,
             email : user.email,
-            victimName : user.victimName
+            victimName : user.victimName,
+            victimCode : user.victimCode
         }
     })
 

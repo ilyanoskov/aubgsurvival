@@ -34,10 +34,12 @@ const kill = async(req, res) => {
         if (victimCode == victim.code) {
             //time to kill!!!
             try {
-                reassign(req.currentUser.code).then(newEvent(req.currentUser.name, usersVictimName));
+                newEvent(req.currentUser.name, victim.name);
+                reassign(req.currentUser.code);
 
             } catch (ex) {
                 res.status(500).json({error: "internal server error"});
+                console.log(ex);
                 return ex;
             }
             res.status(200).json({message: "killing is succesful"});
@@ -94,9 +96,10 @@ const reassign = async(code) => {
 }
 
 const newEvent = (killer, victim) => {
+    console.log('New Event');
     let e = new Events({killer: killer, victim: victim, time: Date.now()});
 
-    e.save(err => { return err});
+    return e.save(err => { return err});
 }
 
 module.exports.kill = kill;
