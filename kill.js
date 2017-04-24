@@ -20,18 +20,18 @@ const kill = async(req, res) => {
     let user = await User.findOne({email : req.currentUser.email});
     if (user.isKilled === false) {
     //get the victimCode from request
-    let victimCode = req.body.code;
-    //get the name of the victim to be killed
-
-    //find the potential victim by code
-    let victim = await User.findOne({code: victimCode});
+    let enteredCode = req.body.code;
+    //get the original code of the victim like it's supposed to be
+    let victimCode = user.victimCode;
+    //find the victim by code
+    let victim = await User.findOne({code: enteredCode});
 
     //if it's not found throw error
     if (!victim) {
         res.status(404).json({error: "no user found"});
     } else {
         //if it's found , compare two names and two codes
-        if (victimCode == victim.code) {
+        if (victimCode === enteredCode && enteredCode === victim.code) {
             //time to kill!!!
             try {
                 newEvent(req.currentUser.name, victim.name);
