@@ -22,7 +22,7 @@ const userBuilder = (body) => {
         passwordConfirmation: body.passwordConfirmation,
         victimCode: "to be assigned",
         victimName: "to be assigned",
-        isKilled: false,
+        isKilled: true,
         kills: 0,
         code: shortid.generate().slice(3)
     });
