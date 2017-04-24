@@ -6,7 +6,7 @@ const get = async (req, res) => {
 }
 
 const erase = async (req, res) => {
-    if (req.data.secret === process.env.APP_SECRET ) {
+    if (req.body.secret === process.env.APP_SECRET ) {
 
     let response = await Events.remove({});
 
