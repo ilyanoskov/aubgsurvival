@@ -96,9 +96,8 @@ const reassign = async(code) => {
 }
 
 const newEvent = (killer, victim) => {
-    console.log('New Event');
     let e = new Events({killer: killer, victim: victim, time: Date.now()});
-
+    console.log(e);
     return e.save(err => { return err});
 }
 
