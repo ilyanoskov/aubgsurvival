@@ -13,11 +13,15 @@ The client is hosted on Github Pages, using gh-pages branch. The server is hoste
 ### MongoDB
 
 # Installation
-```git clone https://github.com/ilyanoskov/aubgsurvival ```
-```cd aubgsurvival/client ```
-```npm install```
-```cd aubgsurvival/backend ```
-```npm install```
+```git clone https://github.com/ilyanoskov/aubgsurvival ```  
+
+```cd aubgsurvival/client ```  
+
+```npm install```  
+
+```cd aubgsurvival/backend ```  
+
+```npm install```  
 
 # Development
 
