@@ -46,5 +46,5 @@ and then do ```npm start``` in client
 
 # Deployment
 
-```npm install -g gh-pages```
+```npm install -g gh-pages```  
 obtain the administrator rights from me and the just do ```npm run deploy``` in both client and backend folders
