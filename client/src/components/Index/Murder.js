@@ -49,7 +49,7 @@ class Murder extends React.Component {
     }
 
     render() {
-        let events = this.props.events;
+        let events = this.props.events.reverse();
         return (
             <div>
                 {printWithLine(events)}

@@ -11,17 +11,17 @@ class Guest extends React.Component {
         return (
             <div className="panel panel-default panel-body container-fluid">
 
-                <div className="row">
-                    <div className="col-lg-12">
-                        <h3>Are you ready?</h3>
-                        <hr/>
-                    </div>
-                    <div className="col-lg-12">
-                        <Link to="/login">
-                            <button className="btn btn-default col-lg-5 col-lg-offset-1 col-xs-5 col-xs-offset-1">Log In</button>
-                        </Link>
-                        <Link to="/register">
-                            <button className="btn btn-info">Participate</button>
+              <div className="row">
+                <div className="col-lg-12">
+                  <h3>Are you ready?</h3>
+                  <hr/>
+                </div>
+                <div className="col-lg-12">
+                  <Link to="/login">
+                    <button className="btn btn-default col-lg-5 col-lg-offset-1 col-md-10 col-sm-10 col-sm-offset-1 col-xs-4 col-xs-offset-1">Log In</button>
+                  </Link>
+                  <Link to="/register">
+                    <button className="btn btn-info">Participate</button>
                         </Link>
                     </div>
                 </div>

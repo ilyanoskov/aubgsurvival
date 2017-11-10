@@ -20,24 +20,26 @@ const kill = async(req, res) => {
     let user = await User.findOne({email : req.currentUser.email});
     if (user.isKilled === false) {
     //get the victimCode from request
-    let victimCode = req.body.code;
-    //get the name of the victim to be killed
-
-    //find the potential victim by code
-    let victim = await User.findOne({code: victimCode});
+    let enteredCode = req.body.code;
+    //get the original code of the victim like it's supposed to be
+    let victimCode = user.victimCode;
+    //find the victim by code
+    let victim = await User.findOne({code: enteredCode});
 
     //if it's not found throw error
     if (!victim) {
         res.status(404).json({error: "no user found"});
     } else {
         //if it's found , compare two names and two codes
-        if (victimCode == victim.code) {
+        if (victimCode === enteredCode && enteredCode === victim.code) {
             //time to kill!!!
             try {
-                reassign(req.currentUser.code).then(newEvent(req.currentUser.name, usersVictimName));
+                newEvent(req.currentUser.name, victim.name);
+                reassign(req.currentUser.code);
 
             } catch (ex) {
                 res.status(500).json({error: "internal server error"});
+                console.log(ex);
                 return ex;
             }
             res.status(200).json({message: "killing is succesful"});
@@ -95,8 +97,8 @@ const reassign = async(code) => {
 
 const newEvent = (killer, victim) => {
     let e = new Events({killer: killer, victim: victim, time: Date.now()});
-
-    e.save(err => { return err});
+    console.log(e);
+    return e.save(err => { return err});
 }
 
 module.exports.kill = kill;

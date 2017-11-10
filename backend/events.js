@@ -6,6 +6,8 @@ const get = async (req, res) => {
 }
 
 const erase = async (req, res) => {
+    if (req.body.secret === process.env.APP_SECRET ) {
+
     let response = await Events.remove({});
 
     if (response) {
@@ -13,6 +15,11 @@ const erase = async (req, res) => {
             message : "removed all events succesfuly"
         })
     }
+} else {
+    res.status(400).json({
+        error : "wrong secret"
+    });
+}
 }
 
 module.exports.get = get;

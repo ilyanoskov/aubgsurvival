@@ -10,7 +10,7 @@ class ScoreboardColumn extends React.Component {
     render() {
         return (
             <div className="col-lg-3 col-md-3 col-sm-3 custom-column">
-                <div className="player-panel panel-body">
+                <div className="player-panel panel-body panel-default panel">
                     <div className="panel-heading panel-default">
                         <h2 style={{
                             textAlign: "center"
@@ -20,7 +20,7 @@ class ScoreboardColumn extends React.Component {
                         {/*ALL PLAYERS STUFF GOES HERE*/}
                         <Scores/>
                     </div>
-                    {/*
+
                         <div className="panel-footer" onClick={this.handleClick}>
                             <div className="text-center">
                                 <small>
@@ -28,7 +28,6 @@ class ScoreboardColumn extends React.Component {
                                 </small>
                             </div>
                         </div>
-                        */}
 
 
                 </div>

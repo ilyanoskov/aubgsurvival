@@ -31,7 +31,8 @@
     "eject": "react-scripts eject",
     "start:server": "http-server -p 3000 ./build",
     "predeploy": "REACT_APP_SERVER=https://aubgsurvival2.herokuapp.com npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "echo 'aubgsurvival.fun'>build/CNAME && gh-pages -d build"
   },
   "homepage": "http://aubgsurvival.fun"
+
 }

@@ -128,6 +128,20 @@ module.exports.delete = async(req, res) => {
     }
 }
 
+module.exports.deleteUser = async (req, res) => {
+    if (req.body.secret === process.env.APP_SECRET) {
+        let response;
+        try {
+            response = await User.remove({email : req.body.email});
+        } catch (ex) {
+            console.error(ex);
+            res.status(500).send(ex);
+        }
+        res.status(200).send(response);
+    } else {
+        res.status(404).send('wrong secret/access denied');
+    }
+}
 // Register a new user
 /*
 1. Validate the input on the server side

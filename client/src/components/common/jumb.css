@@ -1,7 +1,7 @@
 .b {
     background-color: #00000000;
     background-color:rgba(0, 0, 0, 0);
-    background: url('./web1.png') no-repeat;
+    background: url('../../../assets/web1.png') no-repeat;
     margin-bottom: 0;
     min-height: 50%;
     background-repeat: no-repeat;
