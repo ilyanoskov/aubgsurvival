@@ -28,10 +28,12 @@ class KillForm extends React.Component {
       .kill(this.state)
       .then(() => {
         hashHistory.push('/');
+        this.props.addFlashMessage({ type: 'success', text: 'The kill was successfull!' });
       })
       .catch(res => {
         console.log(res);
         hashHistory.push('/');
+        this.props.addFlashMessage({ type: 'error', text: 'Oops, something is wrong'});
       });
   }
 
