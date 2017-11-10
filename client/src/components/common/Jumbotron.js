@@ -5,12 +5,14 @@ import './jumb.css';
 import logo from '../../../assets/survival-logo.png';
 import logo2 from '../../../assets/survival-slogan.png';
 import rules from '../../../assets/button-rules.png';
+import FlashMessagesList from '../flash/FlashMessagesList';
 
 class Jumbotrons extends React.Component {
   render() {
     return (
       <div>
         <Jumbotron>
+          <FlashMessagesList />
           <div className="text-center">
             <img
               src={logo2}
