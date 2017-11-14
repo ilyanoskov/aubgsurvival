@@ -17,7 +17,7 @@ class EventsColumn extends React.Component {
         <div className="text-center panel panel-body panel-default">
           <h3>AUBG Survival Starting Soon! </h3>
           <h4> The registration is open until </h4>
-          <h4 style={{color:"red"}}> Monday, 19th of November, 23:59 </h4>
+          <h4 style={{color:"red"}}> Sunday, 18th of November, 21:00 </h4>
         </div>
         <div className="panel-default panel panel-body">
           <Murder />
