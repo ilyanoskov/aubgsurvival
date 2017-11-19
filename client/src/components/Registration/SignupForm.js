@@ -84,7 +84,7 @@ class SignupForm extends React.Component {
         />
 
         <div className="form-group text-center">
-          <button disabled={this.props.isLoading} className="btn btn-primary">
+          <button disabled={true} className="btn btn-primary">
             Sign up
           </button>
         </div>
