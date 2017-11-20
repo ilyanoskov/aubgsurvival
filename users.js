@@ -111,6 +111,24 @@ module.exports.users = async(req, res) => {
 
     res.send(response);
 };
+//get all users ADMIN
+module.exports.usersData = async(req, res) => {
+  if (req.body.secret === process.env.APP_SECRET) {
+        let response;
+        try {
+            response = await User.find({});
+        } catch (ex) {
+            console.error(ex);
+            res.send(ex);
+        }
+
+        res.send(response);
+  } else {
+     res.status(404).send('wrong secret/ access denied');
+  }
+
+};
+
 
 //delete all users
 module.exports.delete = async(req, res) => {
