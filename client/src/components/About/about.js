@@ -13,20 +13,22 @@ class About extends React.Component {
           that, the killer needs to get the victim’s personal code, embed it
           into the website and press the “kill” button. The system will then
           automatically generate a new victim for you and the same procedure
-          goes with the new victim. <br />The deadline of the game is Thursday,
-          30th of November 17:00 (5pm). That is, the whole process of hunting
-          and killing will be effective till that time only. The system will NOT
-          be accepting your “kills” following the deadline. If there are two
-          people left in the game before the deadline, the game can stop at that
-          moment and you will be notified. The winners of the game are the first
-          person to kill and the three people with the most kills. <br />Prizes
-          will be announced at 18:00 (6pm) on the same day, shortly after the
-          end of the game! A system gives you an access to the events,
-          scoreboard and rules.<br />
+          goes with the new victim. <br />
+          The deadline of the game is Thursday, 4th of December (5pm). That is,
+          the whole process of hunting and killing will be effective till that
+          time only. The system will NOT be accepting your “kills” following the
+          deadline. If there are two people left in the game before the
+          deadline, the game can stop at that moment and you will be notified.
+          The winners of the game are the first person to kill and the three
+          people with the most kills. <br />
+          Prizes will be announced at 18:00 (6pm) on the same day, shortly after
+          the end of the game! A system gives you an access to the events,
+          scoreboard and rules.
+          <br />
           <br /> If there are any misunderstandings or conflicts unresolved
-          between the killer and the victim – contact <b>Noel Ceta</b> or{' '}
-          <b>Ksandros Apostoli</b> asap by email at nnc140@aubg.edu or
-          kna140@aubg.edu, through Facebook or contact any RA at the front desk.
+          between the killer and the victim – contact <b>Irida Shyti</b> asap by
+          email at ins160@aubg.edu, through Facebook or contact any RA at the
+          front desk.
           <h3>Game Execution</h3>
           The process of "killing" should take place only in CLOSED SPACES, like
           lobbies, elevators or halls, so that nobody can "testify" about the
@@ -42,12 +44,12 @@ class About extends React.Component {
           as a potential winner). People, who fail to comply with the rules will
           be automatically disqualified. A victim cannot run away/scream/call
           for help whenever the "killer" starts saying "you are my victim...."
-          <br />If someone pops up in the "crime scene" AFTER the killer said
-          "you are my victim and you are killed" - the murder still COUNTS.
-          Every participant has to kill the victim by himself! If any player is
+          <br />
+          If someone pops up in the "crime scene" AFTER the killer said "you are
+          my victim and you are killed" - the murder still COUNTS. Every
+          participant has to kill the victim by himself! If any player is
           suspicious about someone breaking the rules, he/she can always contact
-          <b> Noel Ceta</b> or <b>Ksandros Apostoli</b> by email at
-          nnc140@aubg.edu or kna140@aubg.edu or through Facebook.{' '}
+          Irida Shyti or ins160@aubg.edu or through Facebook.
         </div>
       </div>
     );
