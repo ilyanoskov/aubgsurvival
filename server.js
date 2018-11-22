@@ -47,15 +47,15 @@ app.post('/api', (req, res) => {
 
 let whitelist = [
   'http://localhost:3000', //this is my front-end url for development
-  'https://ilyanoskov.github.io',
+  'https://augbsurvival.netlify.com',
+  'https://augbsurvival.gq',
   'http://aubgsurvival.gq',
   'http://www.aubgsurvival.gq'
 ];
 
 var corsOptions = {
   origin: function(origin, callback) {
-    if (true) {
-      //if (whitelist.indexOf(origin) !== -1) {
+    if (whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
