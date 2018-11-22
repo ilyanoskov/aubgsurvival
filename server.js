@@ -64,7 +64,7 @@ var corsOptions = {
   credentials: true
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.get('/api/users', users.users);
 app.post('/api/users', users.usersData); //requires secret
