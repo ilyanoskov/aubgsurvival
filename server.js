@@ -14,13 +14,17 @@ const stats = require('./statistics').stats;
 const victims = require('./victims');
 
 const mongoose = require('mongoose');
-const db = mongoose.connect(process.env.MONGODB_URI, {
-  promiseLibrary: Promise
-}).then(()=>{
-  console.log(`--------------------`)
-  console.log(`connected to the database`)
-});
-
+const db = mongoose
+  .connect(
+    process.env.MONGODB_URI,
+    {
+      promiseLibrary: Promise
+    }
+  )
+  .then(() => {
+    console.log(`--------------------`);
+    console.log(`connected to the database`);
+  });
 
 app.use(bodyParser.json());
 app.use(
@@ -44,8 +48,8 @@ app.post('/api', (req, res) => {
 let whitelist = [
   'http://localhost:3000', //this is my front-end url for development
   'https://ilyanoskov.github.io',
-  'http://aubgsurvival.fun',
-  'http://www.aubgsurvival.fun'
+  'http://aubgsurvival.gq',
+  'http://www.aubgsurvival.gq'
 ];
 
 var corsOptions = {
@@ -65,7 +69,7 @@ app.use(cors(corsOptions));
 app.get('/api/users', users.users);
 app.post('/api/users', users.usersData); //requires secret
 
-//app.post('/api/users/register', users.register);
+app.post('/api/users/register', users.register);
 app.delete('/api/users', users.delete); //requires secret
 app.delete('/api/user', users.deleteUser); //requires secret
 app.get('/api/users/personal', authenticate, users.personal);
