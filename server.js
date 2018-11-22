@@ -64,7 +64,7 @@ var corsOptions = {
   credentials: true
 };
 
-app.use(cors({ credentials: true }));
+app.use(cors({ credentials: true, origin: 'https://aubgsurvival.gq' }));
 
 app.get('/api/users', users.users);
 app.post('/api/users', users.usersData); //requires secret
