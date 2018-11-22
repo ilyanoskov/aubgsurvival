@@ -15,8 +15,8 @@ class EventsColumn extends React.Component {
           <h2 style={{ textAlign: 'center' }}>📰 Events</h2>
         </div>
         <div className="text-center panel panel-body panel-default">
-          <h3>AUBG Survival Has Started </h3>
-          <h4> Let the hunt begin! </h4>
+          <h3> The Registration is Now Open </h3>
+          <h4> The Massacre is About to Begin </h4>
         </div>
         <div className="panel-default panel panel-body">
           <Murder />

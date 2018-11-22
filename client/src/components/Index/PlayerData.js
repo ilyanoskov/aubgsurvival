@@ -21,7 +21,7 @@ class Guest extends React.Component {
                     <button className="btn btn-default col-lg-5 col-lg-offset-1 col-md-10 col-sm-10 col-sm-offset-1 col-xs-4 col-xs-offset-1">Log In</button>
                   </Link>
                   <Link to="/register">
-                    <button className="btn btn-info" disabled={true}>Participate</button>
+                    <button className="btn btn-info" disabled={false}>Participate</button>
                         </Link>
                     </div>
                 </div>
