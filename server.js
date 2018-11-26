@@ -69,7 +69,7 @@ app.use(cors({ credentials: true, origin: 'https://aubgsurvival.gq' }));
 app.get('/api/users', users.users);
 app.post('/api/users', users.usersData); //requires secret
 
-app.post('/api/users/register', users.register);
+// app.post('/api/users/register', users.register);
 app.delete('/api/users', users.delete); //requires secret
 app.delete('/api/user', users.deleteUser); //requires secret
 app.get('/api/users/personal', authenticate, users.personal);
