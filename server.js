@@ -83,7 +83,7 @@ app.delete('/api/events', events.erase); //requires secret
 
 //gameplay
 app.post('/api/assign', victims.initialAssign); //requires secret
-app.post('/api/kill', authenticate, kill.kill);
+//app.post('/api/kill', authenticate, kill.kill);
 app.get('/api/stats', stats);
 
 app.set('port', process.env.PORT || 3001);
